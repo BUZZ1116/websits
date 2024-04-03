@@ -1,6 +1,6 @@
 document.write("<h1 style='background-color: lawngreen;text-shadow: 5px 5px 5px black;'<h1>BMI值計算器</h1>");
-let i = prompt("請輸入身高");
-let j = prompt("請輸入體重");
+let i = prompt("請輸入身高 公尺");
+let j = prompt("請輸入體重 公斤");
 let x =j/(i*i);
 if (i == null || j == null){
     document.write("");
