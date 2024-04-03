@@ -9,9 +9,9 @@ if (i == null || j == null){
 }
 else{
     alert(msg);
-if (x <=18.5){
+if (x < 18.5){
     document.write("<h2>BMI體重過輕<\h2>");
-}else if(x <=24){
+}else if(x >= 18.5 && x < 25){
     document.write("<h2>BMI正常範圍<\h2>");
 }else{
 document.write("<h2>BMI異常範圍<\h2>");
