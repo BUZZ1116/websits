@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>電子商務網站</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+    
+    /* 導航欄樣式 */
+    header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background-color: #333;
+      color: white;
+      padding: 10px 20px;
+    }
+
+    header nav ul {
+      list-style-type: none;
+      display: flex;
+    }
+    
+    header nav ul li {
+      margin-right: 10px;
+    }
+    
+    header nav ul li a {
+      color: white;
+      text-decoration: none;
+    }
+    header nav ul li a:hover {
+      color: yellow;
+      text-decoration:underline;
+    }
+    
+    main h2 {
+      background-color: yellow;
+      margin-top: 50px;
+      margin-left: 50px;
+      margin-bottom: 0px;
+    }
+
+    /* 產品列表樣式 */
+    .product-list {
+      display: flex;
+      overflow-x: auto;
+      scroll-snap-type: x mandatory;
+      margin: 0;
+      padding-left: 2rem;
+      padding-right: 2rem;
+      padding-bottom: 2rem;
+    }
+
+    .product-item {
+      margin: 1rem;
+      padding: 1rem;
+      border: 1px solid #ccc;
+      text-align: center;
+      flex: 0 0 auto;
+      min-width: 200px;
+      scroll-snap-align: start;
+    }
+
+    .product-list::-webkit-scrollbar {
+      display: none;
+    }
+    
+    /* 下拉菜单樣式 */
+    .dropdown {
+      position: relative;
+    }
+
+    .dropdown-content {
+      display: none;
+      position: absolute;
+      background-color: lightgrey;
+      
+      min-width: 280px;
+      box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+      z-index: 1;
+    }
+.dropdown{
+    color: black;
+}
+    .dropdown:hover .dropdown-content {
+      display: block;
+    }
+    
+    /* 頁尾樣式 */
+    footer {
+      background-color: #333;
+      color: white;
+      padding: 20px;
+      padding-top:10px ;
+      padding-bottom:10px ;
+      padding-left: 20px;
+    }
+    footer a {
+      color: white;
+      margin-right: 10px;
+      text-decoration: none;
+    }
+    footer a:hover {
+      color: yellow;
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <nav>
+      <ul>
+        <li><a href="index.html">首頁</a></li>
+        <li><a href="#">最新消息</a></li>
+        <li class="dropdown">
+          <a href="#">所有商品</a>
+          <div class="dropdown-content">
+            <a class="dropdown" href="#">濾掛式咖啡</a>
+            <a class="dropdown" href="#">馬克杯</a>
+            <a class="dropdown" href="#">保溫瓶</a>
+            <a class="dropdown" href="#">小物</a>
+          </div>
+        </li>
+        <li><a href="#">關於我們</a></li>
+      </ul>
+    </nav>
+    <div id="cart-icon">
+      <img src="/images/cat.png" alt="購物車" width="30px">
+      <span id="cart-count">0</span>
+    </div>
+  </header>
+
+  <main>
+    <h2>新品上市</h2>
+    <section class="product-list">
+      <div class="product-item">
+        <img id="img1" src="/images/product1.jpg" alt="Product" width="180px">
+        <h3>濾掛式咖啡 10入</h3>
+        <p>價格: NT$400</p>
+        <button class="add-to-cart">加入購物車</button>
+      </div>
+      <div class="product-item">
+        <img id="slide-img" src="/images/product21.jpg" alt="Product" width="180px">
+        <h3>不鏽鋼咖啡馬克杯</h3>
+        <p>價格: NT$1,000</p>
+        <button class="add-to-cart">加入購物車</button>
+      </div>
+      <!-- 其他產品項目 -->
+    </section>
+  </main>
+
+  <footer>
+    <a href="member.jsp">我的帳戶</a><a href="#">客服中心</a><a href="#" target="_blank">服務條款</a>
+    <p>聯絡資訊：<br>每周一至五 10:00-17:00 (國定假日休息)</p>
+    <p>&copy; 電子商務網站</p>
+  </footer>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const addToCartButtons = document.querySelectorAll('.add-to-cart');
+
+      addToCartButtons.forEach(button => {
+        button.addEventListener('click', addToCart);
+      });
+
+      function addToCart(event) {
+        const button = event.target;
+        const productItem = button.parentElement;
+        const productName = productItem.querySelector('h3').textContent;
+        const productPrice = productItem.querySelector('p').textContent;
+
+        // 在這裡可以實現添加到購物車的邏輯，例如存儲到瀏覽器的本地儲存或發送到伺服器
+
+        // 假設加入購物車，更新購物車數量
+        updateCartCount(1); // 這裡假設每次點擊“加入購物車”增加 1 件商品
+        console.log(`已將 ${productName} (${productPrice}) 添加到購物車`);
+      }
+
+      function updateCartCount(quantity) {
+        const cartCountElement = document.getElementById('cart-count');
+        let currentCount = parseInt(cartCountElement.textContent) || 0;
+        currentCount += quantity;
+        cartCountElement.textContent = currentCount;
+      }
+    });
+
+    let slideIndex = 0;
+    const slideImages = [
+      "/images/product21.jpg",
+      "/images/product22.jpg",
+      // 添加其他要輪播的圖片路徑
+    ];
+
+    function showSlide() {
+      const slideImg = document.getElementById("slide-img");
+      slideImg.src = slideImages[slideIndex];
+    }
+
+    function nextSlide() {
+      slideIndex++;
+      if (slideIndex >= slideImages.length) {
+        slideIndex = 0;
+      }
+      showSlide();
+    }
+
+    function prevSlide() {
+      slideIndex--;
+      if (slideIndex < 0) {
+        slideIndex = slideImages.length - 1;
+      }
+      showSlide();
+    }
+
+    // 初始化顯示第一張圖片
+    showSlide();
+
+    // 每隔一段時間自動切換到下一張照片
+    setInterval(nextSlide, 3000); // 每 3 秒切換一次
+  </script>
+</body>
+</html>
