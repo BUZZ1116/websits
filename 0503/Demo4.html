@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+  <title>Photo</title>
+  <style>
+    body {
+      background-color: #336699;
+      color: #fff;
+      font-family: Arial, sans-serif;
+      padding: 20px;
+    }
+
+    /* Existing carousel styles */
+    .carousel {
+      max-width: 800px;
+      position: relative;
+      margin: 0 auto;
+    }
+    .slide {
+      display: none;
+      position: relative;
+    }
+
+    .slide img {
+      width: 100%;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+    }
+
+    .prev, .next {
+      cursor: pointer;
+      position: absolute;
+      top: 50%;
+      padding: 16px;
+      font-weight: bold;
+      font-size: 18px;
+      transition: 0.6s ease;
+      border-radius: 0 3px 3px 0;
+      user-select: none;
+    }
+
+    .next {
+      right: 0;
+      border-radius: 3px 0 0 3px;
+    }
+
+    .thumbnail-container {
+      display: flex;
+      justify-content: center;
+      margin-top: 10px;
+    }
+
+    .img-info {
+      position: absolute;
+      bottom: 12px;
+      left: 10px;
+      line-height: 30px;
+      padding: 5px 10px;
+      color: #e5e9dc;
+      background-color: rgba(0, 0, 0, 0.5);
+      border-radius: 5px;
+    }
+
+    .thumbnail {
+      cursor: pointer;
+      opacity: 0.6;
+      margin: 0 5px;
+      width: 60px;
+      height: 45px;
+      object-fit: cover;
+      border-radius: 5px;
+      box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+    }
+
+    .thumbnail.active {
+      opacity: 1;
+    }
+  </style>
+</head>
+<body>
+  <div class="carousel">
+    <div class="slide">
+      <img src="01.jpg" alt="Bridge Image">
+      <h3 class="img-info">東安古橋</h3>
+    </div>
+    <div class="slide">
+      <img src="02.jpg" alt="LUX Ad">
+      <h3 class="img-info">佛陀世界</h3>
+    </div>
+    <div class="slide">
+      <img src="03.jpg" alt="LUX Ad">
+      <h3 class="img-info">馬武督探索森林</h3>
+    </div>
+    <div class="slide">
+      <img src="04.jpg" alt="LUX Ad">
+      <h3 class="img-info">金勇DIY休閒農場</h3>
+    </div>
+  </div>
+  <button class="prev" onclick="plusSlides(-1)">Previous</button>
+  <button class="next" onclick="plusSlides(1)">Next</button>
+
+  <div class="thumbnail-container">
+    <img class="thumbnail active" src="01.jpg" onclick="currentSlide(1)">
+    <img class="thumbnail" src="02.jpg" onclick="currentSlide(2)">
+    <img class="thumbnail" src="03.jpg" onclick="currentSlide(3)">
+    <img class="thumbnail" src="04.jpg" onclick="currentSlide(4)">
+  </div>
+
+  <script>
+    let slideIndex = 1;
+    showSlides(slideIndex);
+
+    function showSlides(n) {
+      let slides = document.getElementsByClassName("slide");
+      let thumbnails = document.getElementsByClassName("thumbnail");
+      if (n > slides.length) {
+        slideIndex = 1;
+      }
+      if (n < 1) {
+        slideIndex = slides.length;
+      }
+      for (let i = 0; i < slides.length; i++) {
+        slides[i].style.display = "none";
+        thumbnails[i].classList.remove("active");
+      }
+      slides[slideIndex - 1].style.display = "block";
+      thumbnails[slideIndex - 1].classList.add("active");
+    }
+
+    function plusSlides(n) {
+      showSlides(slideIndex += n);
+    }
+
+    function currentSlide(n) {
+      showSlides(slideIndex = n);
+    }
+
+    // Automatic slide show
+    let slideInterval = setInterval(function() {
+      plusSlides(1);
+    }, 5000); // Change slide every 5 seconds
+  </script>
+</body>
+</html>
