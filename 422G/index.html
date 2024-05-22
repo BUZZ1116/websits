@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Div Slider</title>
+    <style>
+        p {
+            width: 612px;
+            height: 16px;
+            margin: 0 auto;
+            font-size: x-large;
+            padding-bottom: 30px;
+            color: white; /* Texte en blanc */
+            background-color: black; /* Fond noir */
+            
+        }
+        .slider {
+            width: 614px;
+            height: 1047px;
+            position: relative;
+            margin: 0 auto;
+            overflow: hidden;
+        }
+
+        .slide {
+            width: 614px;
+            height: 1047px;
+            position: absolute;
+            display: none;
+            background-size: cover;
+            background-position: center;
+        }
+
+        .slide:first-child {
+            display: block;
+        }
+
+        .slide-content {
+            position: relative;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            align-items: center;
+        }
+
+        h1 {
+            text-shadow: 5px 5px 5px black;
+            color: white;
+        }
+
+        .button-container {
+            display: flex;
+            justify-content: space-between;
+            width: 100%; /* 按鈕容器寬度 */
+            padding: 20px 0; /* 上下間距 */
+        }
+
+        button {
+            font-size: 24px;
+            padding: 8px 16px;
+            background-color: rgba(0, 0, 0, 0.5);
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+        footer{
+            width: 614px;
+            height: 16px;
+            margin: 0 auto;
+            font-size: x-large;
+            padding-bottom: 30px;
+        }
+        footer h2{
+            margin: 0 auto;
+        }
+    </style>
+</head>
+<body>
+    <p>專淫本土妹妹-小蝦米-8386k</p>
+    <div class="slider"></div>
+<footer>
+<h2>聯絡方式：妮妮-Line：py636</h2>
+<h2>妹妹資訊：@ky365</h2>
+<h2>約會截圖賴py636</h2>
+</footer>
+    <script>
+        const slides = [
+            { title: '妮妮-py636', backgroundImage: 'img/01.jpg' },
+            { title: '妮妮-py636', backgroundImage: 'img/02.jpg' },
+            { title: '妮妮-py636', backgroundImage: 'img/03.jpg' },
+            { title: '妮妮-py636', backgroundImage: 'img/04.jpg' },
+            { title: '妮妮-py636', backgroundImage: 'img/05.jpg' },
+            { title: '妮妮-py636', backgroundImage: 'img/06.jpg' },
+            { title: '妮妮-py636', backgroundImage: 'img/07.jpg' },
+            { title: '妮妮-py636', backgroundImage: 'img/08.jpg' },
+        ];
+
+        const slider = document.querySelector('.slider');
+
+        slides.forEach((slide, index) => {
+            const div = document.createElement('div');
+            div.className = 'slide';
+            div.style.backgroundImage = `url(${slide.backgroundImage})`;
+
+            const slideContent = document.createElement('div');
+            slideContent.className = 'slide-content';
+
+            const title = document.createElement('h1');
+            title.textContent = slide.title;
+
+            const buttonContainer = document.createElement('div');
+            buttonContainer.className = 'button-container';
+
+            const prevBtn = document.createElement('button');
+            prevBtn.innerHTML = '&lt;';
+            prevBtn.addEventListener('click', () => showSlide(index - 1));
+
+            const nextBtn = document.createElement('button');
+            nextBtn.innerHTML = '&gt;';
+            nextBtn.addEventListener('click', () => showSlide(index + 1));
+
+            buttonContainer.appendChild(prevBtn);
+            buttonContainer.appendChild(nextBtn);
+
+            slideContent.appendChild(title);
+            slideContent.appendChild(buttonContainer);
+
+            div.appendChild(slideContent);
+            slider.appendChild(div);
+        });
+
+        const slidesArray = Array.from(document.querySelectorAll('.slide'));
+        let currentSlide = 0;
+
+        function showSlide(n) {
+            slidesArray[currentSlide].style.display = 'none';
+            currentSlide = (n + slidesArray.length) % slidesArray.length;
+            slidesArray[currentSlide].style.display = 'block';
+        }
+
+        // 初始顯示第一張幻燈片
+        showSlide(0);
+    </script>
+</body>
+</html>
