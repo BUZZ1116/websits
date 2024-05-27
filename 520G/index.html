@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>專淫本土妹妹-小安</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.theme.default.min.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f0f0f0;
+        }
+        header {
+            background-color: #333;
+            color: white;
+            text-align: center;
+            padding: 20px 0;
+            font-size: 1.5em;
+        }
+        .owl-carousel .item {
+            text-align: center;
+        }
+        .owl-carousel .item img {
+            max-width: 100%;
+            height: auto;
+        }
+    </style>
+</head>
+<body>
+    <div id="app">
+        <header>
+專淫本土妹妹-小安<br>
+約會截圖賴：f8629<br>
+TG：https://t.me/f8629/3786
+        </header>
+        <div class="owl-carousel owl-theme">
+            <div class="item" v-for="(image, index) in images" :key="index">
+                <img :src="image" :alt="`Image ${index + 1}`">
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
+    <script>
+        new Vue({
+            el: '#app',
+            data: {
+                images: [
+                    'img/01.jpg',
+                    'img/02.jpg',
+                    'img/03.jpg',
+                    'img/04.jpg',
+                    'img/05.jpg',
+                    'img/06.jpg',
+                    'img/07.jpg',
+                    'img/08.jpg',
+                    'img/09.jpg',
+                    'img/10.jpg',
+                    'img/11.jpg',
+                    'img/12.jpg'
+                ]
+            },
+            mounted() {
+                const vm = this;
+                this.$nextTick(function() {
+                    $(vm.$el).find('.owl-carousel').owlCarousel({
+                        loop: true,
+                        margin: 10,
+                        nav: true,
+                        responsive: {
+                            0: {
+                                items: 1
+                            },
+                            600: {
+                                items: 3
+                            },
+                            1000: {
+                                items: 5
+                            }
+                        }
+                    });
+                });
+            }
+        });
+    </script>
+</body>
+</html>
