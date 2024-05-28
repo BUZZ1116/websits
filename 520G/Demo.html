@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        .container {
+            text-align: center;
+        }
+
+        .box {
+            width: 100px;
+            height: 100px;
+            background-color: lightblue;
+            transition: transform 0.5s;
+            margin: 0 auto;
+            position: relative;
+        }
+
+        .box::before {
+            content: '';
+            position: absolute;
+            top: -2px;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background-color: transparent;
+            transition: background-color 0.5s;
+        }
+
+        .red-edge::before {
+            background-color: red;
+        }
+
+        button {
+            margin-top: 20px;
+        }
+
+        .counter {
+            margin-top: 10px;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="app">
+        <div class="container">
+            <div :class="['box', { 'red-edge': isTopEdgeRed }]" :style="{ transform: 'rotate(' + rotationAngle + 'deg)' }"></div>
+            <button type="button" @click="rotateBox">Rotate the box</button>
+            <div class="counter">count: {{ rotationCount }}</div>
+        </div>
+    </div>
+
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <script>
+        const app = Vue.createApp({
+            data() {
+                return {
+                    rotationAngle: 0,
+                    rotationCount: 0
+                };
+            },
+            computed: {
+                isTopEdgeRed() {
+                    // Check if the box's top edge is at the top
+                    const modAngle = this.rotationAngle % 360;
+                    return modAngle === 0 || modAngle === 180;
+                }
+            },
+            methods: {
+                rotateBox() {
+                    this.rotationAngle += 45;
+                    this.rotationCount += 1;
+                }
+            }
+        });
+
+        app.mount('#app');
+    </script>
+</body>
+
+</html>
