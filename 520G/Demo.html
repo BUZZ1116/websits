@@ -39,6 +39,7 @@
     }
     button {
       margin-top: 20px;
+      margin-right: 10px;
     }
     .counter {
       margin-top: 10px;
@@ -49,8 +50,14 @@
   <div id="app">
     <div class="container">
       <div :class="['box', { 'red-edge': isTopEdgeRed }]" :style="{ transform: 'rotate(' + rotationAngle + 'deg)' }"></div>
-      <button type="button" @click="toggleAutoRotate">{{ isAutoRotating ? 'Stop Rotation' : 'Start Rotation' }}</button>
+      <div>
+        <button type="button" @click="increaseSpeed">減100ms</button>
+        <button type="button" @click="toggleAutoRotate">{{ isAutoRotating ? 'Stop Rotation' : 'Start Rotation' }}</button>
+        
+        <button type="button" @click="decreaseSpeed">加100ms</button>
+      </div>
       <div class="counter">count: {{ rotationCount }}</div>
+      <div class="counter">speed: {{ rotationSpeed }} ms</div>
     </div>
   </div>
 
@@ -62,7 +69,8 @@
           rotationAngle: 0,
           rotationCount: 0,
           isAutoRotating: false,
-          intervalId: null
+          intervalId: null,
+          rotationSpeed: 500 // 初始速度設為 500 毫秒
         };
       },
       computed: {
@@ -85,12 +93,27 @@
           }
         },
         startAutoRotation() {
+          this.stopAutoRotation(); // 確保之前的 interval 被清除
           this.intervalId = setInterval(() => {
             this.rotateBox();
-          }, 500); // 每 500 毫秒旋轉一次
+          }, this.rotationSpeed);
         },
         stopAutoRotation() {
           clearInterval(this.intervalId);
+        },
+        increaseSpeed() {
+          if (this.rotationSpeed > 100) { // 確保速度不會過快
+            this.rotationSpeed -= 100;
+            if (this.isAutoRotating) {
+              this.startAutoRotation(); // 更新速度後重新啟動旋轉
+            }
+          }
+        },
+        decreaseSpeed() {
+          this.rotationSpeed += 100;
+          if (this.isAutoRotating) {
+            this.startAutoRotation(); // 更新速度後重新啟動旋轉
+          }
         }
       },
       mounted() {
