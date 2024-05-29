@@ -20,10 +20,13 @@
       width: 100px;
       height: 100px;
       background-color: lightblue;
-      transition: transform 0.5s;
+      transition: transform 0.5s, background-color 0.5s;
       margin: 0 auto;
       position: relative;
       cursor: pointer;
+    }
+    .box.direction-changed {
+      background-color: lightgreen;
     }
     button {
       margin-top: 20px;
@@ -37,11 +40,11 @@
 <body>
   <div id="app">
     <div class="container">
-      <div class="box" :style="{ transform: 'rotate(' + rotationAngle + 'deg)' }" @click="toggleAutoRotate"></div>
+      <div class="box" :class="{ 'direction-changed': isDirectionChanged }" :style="{ transform: 'rotate(' + rotationAngle + 'deg)' }" @click="toggleAutoRotate"></div>
       <div>
-        <button type="button" @click="increaseSpeed">減100ms</button>
+        <button type="button" @click="increaseSpeed">減少100ms</button>
         <button type="button" @click="resetCount">count 歸零</button>
-        <button type="button" @click="decreaseSpeed">加100ms</button>
+        <button type="button" @click="decreaseSpeed">增加100ms</button>
       </div>
       <div class="counter">count: {{ rotationCount }}</div>
       <div class="counter">速度: {{ rotationSpeed }} ms<br>點擊BOX開始</div>
@@ -56,13 +59,15 @@
           rotationCount: 0,
           isAutoRotating: false,
           intervalId: null,
-          rotationSpeed: 500 // 初始速度設為 500 毫秒
+          rotationSpeed: 500, // 初始速度設為 500 毫秒
+          isDirectionChanged: false
         };
       },
       methods: {
         rotateBox() {
           this.rotationAngle += 45;
           this.rotationCount += 1;
+          this.isDirectionChanged = !this.isDirectionChanged;
         },
         toggleAutoRotate() {
           this.isAutoRotating = !this.isAutoRotating;
