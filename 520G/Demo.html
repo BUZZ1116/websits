@@ -23,19 +23,7 @@
       transition: transform 0.5s;
       margin: 0 auto;
       position: relative;
-    }
-    .box::before {
-      content: '';
-      position: absolute;
-      top: -2px;
-      left: 0;
-      width: 100%;
-      height: 4px;
-      background-color: transparent;
-      transition: background-color 0.5s;
-    }
-    .red-edge::before {
-      background-color: red;
+      cursor: pointer;
     }
     button {
       margin-top: 20px;
@@ -49,18 +37,16 @@
 <body>
   <div id="app">
     <div class="container">
-      <div :class="['box', { 'red-edge': isTopEdgeRed }]" :style="{ transform: 'rotate(' + rotationAngle + 'deg)' }"></div>
+      <div class="box" :style="{ transform: 'rotate(' + rotationAngle + 'deg)' }" @click="toggleAutoRotate"></div>
       <div>
         <button type="button" @click="increaseSpeed">減100ms</button>
-        <button type="button" @click="toggleAutoRotate">{{ isAutoRotating ? 'Stop Rotation' : 'Start Rotation' }}</button>
-        
+        <button type="button" @click="resetCount">count 歸零</button>
         <button type="button" @click="decreaseSpeed">加100ms</button>
       </div>
       <div class="counter">count: {{ rotationCount }}</div>
-      <div class="counter">speed: {{ rotationSpeed }} ms</div>
+      <div class="counter">速度: {{ rotationSpeed }} ms<br>點擊BOX開始</div>
     </div>
   </div>
-
   <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
   <script>
     const app = Vue.createApp({
@@ -72,12 +58,6 @@
           intervalId: null,
           rotationSpeed: 500 // 初始速度設為 500 毫秒
         };
-      },
-      computed: {
-        isTopEdgeRed() {
-          const modAngle = this.rotationAngle % 360;
-          return modAngle === 0 || modAngle === 180;
-        }
       },
       methods: {
         rotateBox() {
@@ -114,6 +94,9 @@
           if (this.isAutoRotating) {
             this.startAutoRotation(); // 更新速度後重新啟動旋轉
           }
+        },
+        resetCount() {
+          this.rotationCount = 0; // 將旋轉計數歸零
         }
       },
       mounted() {
@@ -125,7 +108,6 @@
         this.stopAutoRotation();
       }
     });
-
     app.mount('#app');
   </script>
 </body>
