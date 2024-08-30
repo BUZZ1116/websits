@@ -16,6 +16,7 @@
             list-style: none;
             padding: 0;
             margin: 0;
+            background-color: #444; /* Dark gray for navigation bar */
         }
         ul.drop-down-menu > li {
             position: relative;
@@ -57,7 +58,7 @@
             background-color: #555; /* Lighter gray for header */
         }
         footer {
-            background-color: #222; /* Dark footer background */
+            background-color: #444; /* Dark gray for footer */
             color: white; /* White text for footer */
             text-align: center;
             padding: 10px;
@@ -236,8 +237,15 @@
         </tbody>
     </table>
 
-    <footer>
-        &copy; 2024 111學年度 生涯發展教育工作執行委員會. All rights reserved.
-    </footer>
+    <script>
+        function createFooter() {
+            const footer = document.createElement('footer');
+            footer.innerHTML = '&copy; 2024 111學年度 生涯發展教育工作執行委員會. All rights reserved.';
+            document.body.appendChild(footer);
+        }
+
+        // Call the function to create and insert the footer
+        createFooter();
+    </script>
 </body>
 </html>
