@@ -12,27 +12,27 @@
             margin: 0;
             padding: 0;
         }
-        ul.drop-down-menu {
+        .drop-down-menu {
             list-style: none;
             padding: 0;
             margin: 0;
             background-color: #444; /* Dark gray for navigation bar */
         }
-        ul.drop-down-menu > li {
+        .drop-down-menu > li {
             position: relative;
             display: inline-block;
             margin-right: 20px;
         }
-        ul.drop-down-menu a {
+        .drop-down-menu a {
             text-decoration: none;
             padding: 10px;
             display: block;
             color: white; /* White text for dropdown */
         }
-        ul.drop-down-menu > li:hover > a {
+        .drop-down-menu > li:hover > a {
             background-color: #555; /* Lighter gray on hover */
         }
-        ul.drop-down-menu ul {
+        .drop-down-menu ul {
             display: none; /* Hide submenu */
             position: absolute;
             left: 0;
@@ -41,7 +41,7 @@
             box-shadow: 0 2px 5px rgba(0,0,0,0.2);
             z-index: 1;
         }
-        ul.drop-down-menu li:hover > ul {
+        .drop-down-menu li:hover > ul {
             display: block; /* Show submenu on hover */
         }
         table {
@@ -69,39 +69,6 @@
     </style>
 </head>
 <body>
-    <ul class="drop-down-menu">
-        <li><a href="#">首頁</a></li>
-        <li><a href="#">學校基本資料</a>
-            <ul>
-                <li><a href="#">全校班級數</a></li>
-                <li><a href="#">教師人數</a></li>
-                <li><a href="#">辦理相關經費</a></li>
-                <li><a href="#">技藝教育抽離式課程</a></li>
-            </ul>
-        </li>
-        <li><a href="#">生涯發展教育</a>
-            <ul>
-                <li><a href="#">行政措施與組織運作</a></li>
-                <li><a href="#">課程規劃與教學活動</a></li>
-                <li><a href="#">學生學習與輔導</a></li>
-                <li><a href="#">特色推動</a></li>
-            </ul>
-        </li>
-        <li><a href="#">技藝教育抽離式課程</a>
-            <ul>
-                <li><a href="#">行政與輔導</a></li>
-                <li><a href="#">課程與教學</a></li>
-                <li><a href="#">環境與經費</a></li>
-                <li><a href="#">特色及推動</a></li>
-            </ul>
-        </li>
-        <li><a href="#">其他</a>
-            <ul>
-                <li><a href="#">生涯教學</a></li>
-            </ul>
-        </li>
-    </ul>
-
     <h2>111學年度 生涯發展教育工作執行委員會 組織與執掌</h2>
 
     <table>
@@ -237,15 +204,6 @@
         </tbody>
     </table>
 
-    <script>
-        function createFooter() {
-            const footer = document.createElement('footer');
-            footer.innerHTML = '&copy; 2024 111學年度 生涯發展教育工作執行委員會. All rights reserved.';
-            document.body.appendChild(footer);
-        }
-
-        // Call the function to create and insert the footer
-        createFooter();
-    </script>
+    <script src="JS.js"></script> <!-- Import the JS file -->
 </body>
 </html>
