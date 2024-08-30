@@ -7,6 +7,10 @@
     <style>
         body {
             font-family: "Arial", "微軟正黑體", sans-serif;
+            background-color: #333; /* Dark gray background */
+            color: white; /* White text for better contrast */
+            margin: 0;
+            padding: 0;
         }
         ul.drop-down-menu {
             list-style: none;
@@ -22,17 +26,17 @@
             text-decoration: none;
             padding: 10px;
             display: block;
-            color: black;
+            color: white; /* White text for dropdown */
         }
         ul.drop-down-menu > li:hover > a {
-            background-color: #ddd;
+            background-color: #555; /* Lighter gray on hover */
         }
         ul.drop-down-menu ul {
             display: none; /* Hide submenu */
             position: absolute;
             left: 0;
             top: 100%; /* Position below the parent */
-            background-color: white;
+            background-color: #444; /* Darker background for submenu */
             box-shadow: 0 2px 5px rgba(0,0,0,0.2);
             z-index: 1;
         }
@@ -45,12 +49,21 @@
             margin-top: 20px;
         }
         th, td {
-            border: 1px solid black;
+            border: 1px solid white; /* White border for table */
             padding: 8px;
             text-align: left;
         }
         th {
-            background-color: #f2f2f2;
+            background-color: #555; /* Lighter gray for header */
+        }
+        footer {
+            background-color: #222; /* Dark footer background */
+            color: white; /* White text for footer */
+            text-align: center;
+            padding: 10px;
+            position: relative;
+            bottom: 0;
+            width: 100%;
         }
     </style>
 </head>
@@ -223,5 +236,8 @@
         </tbody>
     </table>
 
+    <footer>
+        &copy; 2024 111學年度 生涯發展教育工作執行委員會. All rights reserved.
+    </footer>
 </body>
 </html>
