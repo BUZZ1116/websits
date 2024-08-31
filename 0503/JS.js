@@ -53,7 +53,7 @@ function createNavBar() {
 
 function createFooter() {
     const footer = document.createElement('footer');
-    footer.innerHTML = '&copy; 2024 111學年度 生涯發展教育工作執行委員會. All rights reserved.';
+    footer.innerHTML = '&copy; 2024 新竹市立培英國民中學. All rights reserved.';
     document.body.appendChild(footer);
 }
 
