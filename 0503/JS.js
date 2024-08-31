@@ -1,5 +1,24 @@
 // JS.js
 
+function createHeader() {
+    const headerDiv = document.createElement('div');
+    headerDiv.className = 'header';
+    headerDiv.style.display = 'flex';
+
+    const logoImg = document.createElement('img');
+    logoImg.src = 'logo.png';
+    logoImg.alt = 'Logo';
+    logoImg.width = 88;
+
+    const schoolName = document.createElement('h2');
+    schoolName.textContent = '新竹市立培英國民中學';
+
+    headerDiv.appendChild(logoImg);
+    headerDiv.appendChild(schoolName);
+
+    document.body.prepend(headerDiv); // Add header at the top
+}
+
 function createNavBar() {
     const navBar = document.createElement('ul');
     navBar.className = 'drop-down-menu';
@@ -48,7 +67,7 @@ function createNavBar() {
         navBar.appendChild(li);
     });
 
-    document.body.prepend(navBar); // Add nav bar at the top
+    document.body.prepend(navBar); // Add nav bar at the top, below the header
 }
 
 function createFooter() {
@@ -57,6 +76,7 @@ function createFooter() {
     document.body.appendChild(footer);
 }
 
-// Call the functions to create and insert the navigation bar and footer
+// Call the functions to create and insert the header, navigation bar, and footer
+createHeader();
 createNavBar();
 createFooter();
