@@ -8,6 +8,7 @@ function createNavBar() {
     const brandLink = document.createElement('a');
     brandLink.className = 'navbar-brand';
     brandLink.href = 'index.html';
+
     const logoImg = document.createElement('img');
     logoImg.src = 'logo.png';
     logoImg.alt = 'Logo';
@@ -15,7 +16,15 @@ function createNavBar() {
     logoImg.height = 30;
     logoImg.className = 'd-inline-block align-text-top';
     brandLink.appendChild(logoImg);
-    brandLink.appendChild(document.createTextNode('112年培英國中生涯發展教育暨技藝教育'));
+
+    // 添加品牌文本和换行符
+    const text1 = document.createTextNode('培英國民中學');
+    const lineBreak = document.createElement('br');
+    const text2 = document.createTextNode('112年生涯發展教育暨技藝教育');
+
+    brandLink.appendChild(text1);
+    brandLink.appendChild(lineBreak);
+    brandLink.appendChild(text2);
 
     const toggleButton = document.createElement('button');
     toggleButton.className = 'navbar-toggler';
