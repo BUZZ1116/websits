@@ -24,14 +24,19 @@ function createNavBar() {
     navBar.className = 'drop-down-menu';
 
     const menuItems = [
-        { name: '首頁', submenu: [] },
+        { name: '首頁', link: 'index.html', submenu: [] },  // Link to index.html
         { 
             name: '學校基本資料', 
             submenu: ['全校班級數', '教師人數', '辦理相關經費', '技藝教育抽離式課程'] 
         },
         { 
             name: '生涯發展教育', 
-            submenu: ['行政措施與組織運作', '課程規劃與教學活動', '學生學習與輔導', '特色推動'] 
+            submenu: [
+                '行政措施與組織運作', 
+                '課程規劃與教學活動', 
+                { name: '學生學習與輔導', link: '2-3.html' }, // Link to 2-3.html
+                '特色推動'
+            ] 
         },
         { 
             name: '技藝教育抽離式課程', 
@@ -46,7 +51,7 @@ function createNavBar() {
     menuItems.forEach(item => {
         const li = document.createElement('li');
         const a = document.createElement('a');
-        a.href = '#';
+        a.href = item.link || '#';  // Use the link if provided, otherwise '#'
         a.textContent = item.name;
 
         li.appendChild(a);
@@ -56,8 +61,15 @@ function createNavBar() {
             item.submenu.forEach(subItem => {
                 const subLi = document.createElement('li');
                 const subA = document.createElement('a');
-                subA.href = '#';
-                subA.textContent = subItem;
+                
+                if (typeof subItem === 'object' && subItem.link) {
+                    subA.href = subItem.link; // Link to the specified URL
+                    subA.textContent = subItem.name;
+                } else {
+                    subA.href = '#';
+                    subA.textContent = subItem;
+                }
+                
                 subLi.appendChild(subA);
                 subUl.appendChild(subLi);
             });
