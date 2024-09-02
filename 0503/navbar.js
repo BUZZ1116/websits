@@ -56,7 +56,7 @@ function createNavBar() {
         },
         {
             name: '其他',
-            submenu: []
+            submenu: ['生涯教學資料',]
         }
     ];
 
