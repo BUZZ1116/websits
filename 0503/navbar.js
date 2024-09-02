@@ -15,7 +15,7 @@ function createNavBar() {
     logoImg.height = 30;
     logoImg.className = 'd-inline-block align-text-top';
     brandLink.appendChild(logoImg);
-    brandLink.appendChild(document.createTextNode(' 培英國中'));
+    brandLink.appendChild(document.createTextNode('112年培英國中生涯發展教育暨技藝教育'));
 
     const toggleButton = document.createElement('button');
     toggleButton.className = 'navbar-toggler';
