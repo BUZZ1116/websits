@@ -40,10 +40,10 @@ function createNavBar() {
         {
             name: '學校基本資料',
             submenu: [
-                { name: '全校班級數', modalId: 'classModal' }, // 觸發班級數量模態視窗
-                { name: '教師人數', modalId: 'teacherModal' }, // 觸發教師人數模態視窗
-                { name: '辦理相關經費', modalId: 'fundingModal' }, // 觸發經費模態視窗
-                '技藝教育抽離式課程'
+                { name: '全校班級數', modalId: 'classModal' }, // 触发班级数量模态窗口
+                { name: '教師人數', modalId: 'teacherModal' }, // 触发教师人数模态窗口
+                { name: '辦理相關經費', modalId: 'fundingModal' }, // 触发经费模态窗口
+                { name: '技藝教育抽離式課程', modalId: 'skillCourseModal' }, // 触发技艺教育抽离式课程模态窗口
             ]
         },
         {
@@ -56,7 +56,7 @@ function createNavBar() {
         },
         {
             name: '其他',
-            submenu: ['生涯教學資料',]
+            submenu: ['生涯教學資料']
         }
     ];
 
@@ -277,6 +277,24 @@ function createModals() {
                             </tr>
                         </tbody>
                     </table>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">關閉</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!--技藝教育抽離式課程 Modal -->
+    <div class="modal fade" id="skillCourseModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="skillCourseModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-scrollable modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="skillCourseModalLabel">技藝教育抽離式課程</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    技藝教育抽離式課程的內容將顯示在這裡。
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">關閉</button>
