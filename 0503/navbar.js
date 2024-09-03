@@ -68,7 +68,10 @@ function createNavBar() {
         },
         {
             name: '其他',
-            submenu: ['生涯教學資料']
+            submenu: [
+                { name: '生涯教學資料', link: '#' }, // 这里的 link 可以根据需要修改
+                { name: '關於我們', link: 'about.html' } // 直接链接到 about.html
+            ]
         }
     ];
 
@@ -101,6 +104,9 @@ function createNavBar() {
                     subA.href = '#';
                     subA.setAttribute('data-bs-toggle', 'modal');
                     subA.setAttribute('data-bs-target', `#${subItem.modalId}`);
+                    subA.textContent = subItem.name;
+                } else if (typeof subItem === 'object' && subItem.link) {
+                    subA.href = subItem.link;
                     subA.textContent = subItem.name;
                 } else {
                     subA.href = '#';
