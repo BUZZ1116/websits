@@ -1,25 +1,162 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zh-TW">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="icon" href="logo.png" type="image/png"> 
     <title>生涯教學資料</title>
+    <link rel="icon" href="logo.png" type="image/png">
 
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    <!-- Bootstrap JS and Popper.js -->
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.min.js"></script>
+    <!-- 自定义 CSS -->
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <h2>生涯教學資料</h2>
 
+    <!-- 主内容 -->
+    <main class="container my-5">
+        <h2 class="mb-4 text-center">生涯教學資料</h2>
+
+        <!-- Bootstrap Accordion -->
+        <div class="accordion" id="careerAccordion">
+            <!-- 國文領域 -->
+            <div class="accordion-item">
+                <h2 class="accordion-header" id="headingOne">
+                    <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                        國文領域
+                    </button>
+                </h2>
+                <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#careerAccordion">
+                    <div class="accordion-body">
+                        本教案透過文學作品《五柳先生傳》，引導學生探索自我，思考如何在生活中實現個人的理想與價值。學生將學習如何在未來的職涯選擇中運用所學，達成生涯目標。
+                        <br><a href="https://9372300475.cbaul-cdnwnd.com/44dd1732f6f15f9d2debf97e8cbb41d0/200002103-8953989bcd/%E7%94%9F%E6%B6%AF%E8%9E%8D%E5%85%A5%E6%95%99%E6%A1%88.pdf" class="btn btn-primary mt-3">查看教案</a>
+                    </div>
+                </div>
+            </div>
+            <!-- 數學領域 -->
+            <div class="accordion-item">
+                <h2 class="accordion-header" id="headingTwo">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                        數學領域
+                    </button>
+                </h2>
+                <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#careerAccordion">
+                    <div class="accordion-body">
+                        本教案旨在通過數學問題解決過程中的邏輯推理與分析，幫助學生培養計劃與管理能力，並將這些能力應用到未來職業生涯的規劃與實踐中。
+                        <br><a href="career-planning.html" class="btn btn-primary mt-3">查看更多</a>
+                    </div>
+                </div>
+            </div>
+            <!-- 英文領域 -->
+            <div class="accordion-item">
+                <h2 class="accordion-header" id="headingThree">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                        英文領域
+                    </button>
+                </h2>
+                <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#careerAccordion">
+                    <div class="accordion-body">
+                        英文教學不僅提升學生的語言技能，還能幫助他們了解全球職場文化及溝通技巧，為未來的國際職涯奠定堅實基礎。
+                        <br><a href="skill-development.html" class="btn btn-primary mt-3">查看更多</a>
+                    </div>
+                </div>
+            </div>
+            <!-- 自然領域 -->
+            <div class="accordion-item">
+                <h2 class="accordion-header" id="headingFour">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
+                        自然領域
+                    </button>
+                </h2>
+                <div id="collapseFour" class="accordion-collapse collapse" aria-labelledby="headingFour" data-bs-parent="#careerAccordion">
+                    <div class="accordion-body">
+                        透過自然科學的探索，學生將學習如何進行實驗與數據分析，這些技能將有助於他們未來在科學或技術相關職業中的發展。
+                        <br><a href="skill-development.html" class="btn btn-primary mt-3">查看更多</a>
+                    </div>
+                </div>
+            </div>
+            <!-- 社會領域 -->
+            <div class="accordion-item">
+                <h2 class="accordion-header" id="headingFive">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFive" aria-expanded="false" aria-controls="collapseFive">
+                        社會領域
+                    </button>
+                </h2>
+                <div id="collapseFive" class="accordion-collapse collapse" aria-labelledby="headingFive" data-bs-parent="#careerAccordion">
+                    <div class="accordion-body">
+                        社會學習幫助學生理解人類社會的運作規律，這對於未來從事公共管理、法律或社會科學研究等領域的職業非常重要。
+                        <br><a href="skill-development.html" class="btn btn-primary mt-3">查看更多</a>
+                    </div>
+                </div>
+            </div>
+            <!-- 健體領域 -->
+            <div class="accordion-item">
+                <h2 class="accordion-header" id="headingSix">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSix" aria-expanded="false" aria-controls="collapseSix">
+                        健體領域
+                    </button>
+                </h2>
+                <div id="collapseSix" class="accordion-collapse collapse" aria-labelledby="headingSix" data-bs-parent="#careerAccordion">
+                    <div class="accordion-body">
+                        健體教育旨在培養學生的體能與健康意識，這些能力對於未來在運動、健康管理或體育教育等職業中具有重要意義。
+                        <br><a href="skill-development.html" class="btn btn-primary mt-3">查看更多</a>
+                    </div>
+                </div>
+            </div>
+            <!-- 綜合領域 -->
+            <div class="accordion-item">
+                <h2 class="accordion-header" id="headingSeven">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSeven" aria-expanded="false" aria-controls="collapseSeven">
+                        綜合領域
+                    </button>
+                </h2>
+                <div id="collapseSeven" class="accordion-collapse collapse" aria-labelledby="headingSeven" data-bs-parent="#careerAccordion">
+                    <div class="accordion-body">
+                        綜合領域強調多學科的綜合應用，幫助學生在複雜的現實問題中發展解決問題的能力，這在未來職業中至關重要。
+                        <br><a href="skill-development.html" class="btn btn-primary mt-3">查看更多</a>
+                    </div>
+                </div>
+            </div>
+            <!-- 藝文領域 -->
+            <div class="accordion-item">
+                <h2 class="accordion-header" id="headingEight">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseEight" aria-expanded="false" aria-controls="collapseEight">
+                        藝文領域
+                    </button>
+                </h2>
+                <div id="collapseEight" class="accordion-collapse collapse" aria-labelledby="headingEight" data-bs-parent="#careerAccordion">
+                    <div class="accordion-body">
+                        藝文教育不僅培養學生的藝術欣賞能力，還能激發創造力，這對於未來從事藝術設計、創意產業等職業有很大幫助。
+                        <br><a href="skill-development.html" class="btn btn-primary mt-3">查看更多</a>
+                    </div>
+                </div>
+            </div>
+            <!-- 輔導領域 -->
+            <div class="accordion-item">
+                <h2 class="accordion-header" id="headingNine">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseNine" aria-expanded="false" aria-controls="collapseNine">
+                        輔導領域
+                    </button>
+                </h2>
+                <div id="collapseNine" class="accordion-collapse collapse" aria-labelledby="headingNine" data-bs-parent="#careerAccordion">
+                    <div class="accordion-body">
+                        輔導領域著重學生心理健康與生涯發展，通過個別輔導和團體活動，幫助學生建立積極的人生觀和職業規劃能力。
+                        <br><a href="skill-development.html" class="btn btn-primary mt-3">查看更多</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </main>
 
     <!-- 引入 navbar.js 文件 -->
     <script src="navbar.js"></script>
 
-    <!-- 引入 modals.js 文件 -->
-    <script src="modals.js"></script>
+    <!-- 引入 footer.js 文件 -->
+    <script src="footer.js"></script>
+
+    <!-- 引入 Bootstrap JS 和 Popper.js -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
 </body>
 </html>
