@@ -19,12 +19,19 @@ function createNavBar() {
     brandLink.appendChild(logoImg);
 
     // 添加品牌名称并换行
-    const text1 = document.createTextNode('培英國民中學');
-    const lineBreak = document.createElement('br');
-    const text2 = document.createTextNode('112年生涯發展教育暨技藝教育');
-    brandLink.appendChild(text1);
-    brandLink.appendChild(lineBreak);
-    brandLink.appendChild(text2);
+    const textContainer = document.createElement('div');
+    textContainer.style.display = 'inline-block';
+    textContainer.style.verticalAlign = 'middle';
+    textContainer.style.marginLeft = '10px';
+
+    const text1 = document.createElement('div');
+    text1.textContent = '培英國民中學';
+    const text2 = document.createElement('div');
+    text2.textContent = '112年生涯發展教育暨技藝教育';
+    
+    textContainer.appendChild(text1);
+    textContainer.appendChild(text2);
+    brandLink.appendChild(textContainer);
 
     // 创建菜单切换按钮
     const toggleButton = document.createElement('button');
