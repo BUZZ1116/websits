@@ -1,6 +1,7 @@
 function createNavBar() {
     const navBar = document.createElement('nav');
-    navBar.className = 'navbar navbar-expand-lg navbar-light bg-light';
+    navBar.className = 'navbar navbar-expand-lg';
+    navBar.style.backgroundColor = '#c0e6a5';
 
     const containerDiv = document.createElement('div');
     containerDiv.className = 'container-fluid';
@@ -18,22 +19,25 @@ function createNavBar() {
     logoImg.className = 'd-inline-block align-text-top';
     brandLink.appendChild(logoImg);
 
-    // 添加品牌名称并换行
     const textContainer = document.createElement('div');
     textContainer.style.display = 'inline-block';
-    textContainer.style.verticalAlign = 'middle';
     textContainer.style.marginLeft = '10px';
 
     const text1 = document.createElement('div');
+    text1.style.fontWeight = 'bold';
+    text1.style.fontSize = '16px';
     text1.textContent = '培英國民中學';
+
     const text2 = document.createElement('div');
+    text2.style.fontSize = '14px';
     text2.textContent = '112年生涯發展教育暨技藝教育';
-    
+
     textContainer.appendChild(text1);
     textContainer.appendChild(text2);
     brandLink.appendChild(textContainer);
 
-    // 创建菜单切换按钮
+    containerDiv.appendChild(brandLink);
+
     const toggleButton = document.createElement('button');
     toggleButton.className = 'navbar-toggler';
     toggleButton.type = 'button';
@@ -42,11 +46,13 @@ function createNavBar() {
     toggleButton.setAttribute('aria-controls', 'navbarSupportedContent');
     toggleButton.setAttribute('aria-expanded', 'false');
     toggleButton.setAttribute('aria-label', 'Toggle navigation');
+
     const toggleIcon = document.createElement('span');
     toggleIcon.className = 'navbar-toggler-icon';
     toggleButton.appendChild(toggleIcon);
 
-    // 创建菜单项
+    containerDiv.appendChild(toggleButton);
+
     const collapseDiv = document.createElement('div');
     collapseDiv.className = 'collapse navbar-collapse';
     collapseDiv.id = 'navbarSupportedContent';
@@ -142,8 +148,6 @@ function createNavBar() {
     });
 
     collapseDiv.appendChild(ul);
-    containerDiv.appendChild(brandLink);
-    containerDiv.appendChild(toggleButton);
     containerDiv.appendChild(collapseDiv);
     navBar.appendChild(containerDiv);
 
@@ -152,8 +156,37 @@ function createNavBar() {
 
 function createFooter() {
     const footer = document.createElement('footer');
-    footer.className = 'text-center bg-light py-3';
-    footer.innerHTML = '&copy; 2024 新竹市立培英國民中學. All rights reserved.';
+    footer.className = 'text-center';
+    footer.style.backgroundColor = '#c0e6a5';
+    footer.style.padding = '20px 0';
+
+    const footerContainer = document.createElement('div');
+    footerContainer.className = 'container';
+
+    const row = document.createElement('div');
+    row.className = 'row';
+
+    const colLeft = document.createElement('div');
+    colLeft.className = 'col-md-6 text-start';
+    colLeft.innerHTML = `
+        新竹市東區培英國中<br>
+        30068 新竹市學府路4號 No. 4, Xuefu Rd., East Dist., Hsinchu City , Taiwan (R.O.C.)<br>
+        電話 03-5721301 傳真 03-5726578<br>
+        
+    `;
+
+    const colRight = document.createElement('div');
+    colRight.className = 'col-md-6 text-end';
+    colRight.innerHTML = `
+        
+        建議最佳瀏覽環境: Chrome 62 以上版本、Firefox 56 以上版本、Microsoft Edge
+    `;
+
+    row.appendChild(colLeft);
+    row.appendChild(colRight);
+    footerContainer.appendChild(row);
+    footer.appendChild(footerContainer);
+
     document.body.appendChild(footer);
 }
 
