@@ -78,7 +78,7 @@ function createNavBar() {
         {
             name: '其他',
             submenu: [
-                { name: '生涯教學資料', link: '#' },
+                { name: '生涯教學資料', link: '4-1.html' },
                 { name: '關於我們', link: 'about.html' }
             ]
         }
