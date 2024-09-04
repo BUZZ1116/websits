@@ -21,6 +21,10 @@ function createFooter() {
     const colRight = document.createElement('div');
     colRight.className = 'col-md-6 text-end';
     colRight.innerHTML = `
+                <div style="display: inline-flex; gap: 10px;">
+            <img src="icon/line.png" alt="Line Icon" style="width: 24px; height: auto;">
+            <img src="icon/facebook.png" alt="Facebook Icon" style="width: 24px; height: auto;">
+        </div><br>
         建議最佳瀏覽環境: Chrome 62 以上版本、Firefox 56 以上版本、Microsoft Edge
     `;
 
