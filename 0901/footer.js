@@ -28,7 +28,8 @@ function createFooter() {
             <img src="icon/line.png" alt="Line Icon" style="width: 24px; height: auto;">
             <img src="icon/facebook.png" alt="Facebook Icon" style="width: 24px; height: auto;">
         </div><br>
-        建議最佳瀏覽環境: Chrome 62 以上版本、Firefox 56 以上版本、Microsoft Edge
+        建議最佳瀏覽環境: Chrome 62 以上版本、Firefox 56 以上版本、Microsoft Edge<br>
+        Design by LO WEI JHIH
     `;
 
     row.appendChild(colLeft);
