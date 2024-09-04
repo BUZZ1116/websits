@@ -21,7 +21,10 @@ function createFooter() {
     const colRight = document.createElement('div');
     colRight.className = 'col-md-6 text-end';
     colRight.innerHTML = `
-                <div style="display: inline-flex; gap: 10px;">
+        <div style="display: inline-flex; gap: 10px;">
+            <a href="mailto:pijh06@hc.edu.tw">
+                <img src="icon/email.png" alt="Email Icon" style="width: 24px; height: auto;">
+            </a>
             <img src="icon/line.png" alt="Line Icon" style="width: 24px; height: auto;">
             <img src="icon/facebook.png" alt="Facebook Icon" style="width: 24px; height: auto;">
         </div><br>
