@@ -1,7 +1,8 @@
 function createNavBar() {
     const navBar = document.createElement('nav');
-    navBar.className = 'navbar navbar-expand-lg';
+    navBar.className = 'navbar navbar-expand-lg sticky-top'; // Add sticky-top class
     navBar.style.backgroundColor = '#c0e6a5';
+    navBar.style.boxShadow = '0 4px 6px rgba(0, 0, 0, 0.1)'; // Adding shadow to navbar
 
     const containerDiv = document.createElement('div');
     containerDiv.className = 'container-fluid';
@@ -10,7 +11,7 @@ function createNavBar() {
     brandLink.className = 'navbar-brand';
     brandLink.href = 'index.html';
 
-    // 添加品牌Logo和文本
+    // Adding brand logo and text
     const logoImg = document.createElement('img');
     logoImg.src = 'logo.png';
     logoImg.alt = 'Logo';
@@ -153,6 +154,8 @@ function createNavBar() {
 
     document.body.prepend(navBar);
 }
+
+
 
 function createFooter() {
     const footer = document.createElement('footer');
