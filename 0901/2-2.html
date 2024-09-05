@@ -4,8 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" href="logo.png" type="image/png">
-    <link rel="stylesheet" href="styles.css"> 
     <title>課程規劃與教學活動</title>
+    <link rel="stylesheet" href="styles.css"> 
 
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -23,38 +23,54 @@
     <!-- Pagination Section -->
     <nav aria-label="Page navigation example">
         <ul class="pagination justify-content-center">
-
-
-            <li class="page-item"><a class="page-link" href="#">生涯發展教育實施計畫</a></li>
-            <li class="page-item"><a class="page-link" href="#">課程教學研究及融入課程教學</a></li>
-            <li class="page-item"><a class="page-link" href="#">生涯發展教育適性活動</a></li>
-
+            <li class="page-item"><a class="page-link" href="#section1">生涯發展教育實施計畫</a></li>
+            <li class="page-item"><a class="page-link" href="#section2">課程教學研究及融入課程教學</a></li>
+            <li class="page-item"><a class="page-link" href="#section3">生涯發展教育適性活動</a></li>
         </ul>
     </nav>
+
+    <!-- Section 1: 生涯發展教育實施計畫 -->
+    <div class="container mt-5" id="section1">
+        <h3>生涯發展教育實施計畫</h3>
+        <p>這一部分將介紹生涯發展教育的實施計畫，探討如何規劃和推動學生的生涯發展教育，幫助學生了解未來的生涯發展路徑。</p>
+    </div>
+
+    <!-- Section 2: 課程教學研究及融入課程教學 -->
+    <div class="container mt-5" id="section2">
+        <h3>課程教學研究及融入課程教學</h3>
+        <p>本節將介紹如何將生涯發展教育融入日常課程教學，並通過實證研究來提升學生的學習效果與未來生涯規劃能力。</p>
+    </div>
+
+    <!-- Section 3: 生涯發展教育適性活動 -->
+    <div class="container mt-5" id="section3">
+        <h3>生涯發展教育適性活動</h3>
+        <p>這裡將探討為學生設計的生涯發展適性活動，讓學生通過實際參與了解自己的興趣和潛能，並運用於生涯發展中。</p>
+    </div>
 
    <!---------------------------------------- 分隔線 ------------------------------------->
    <a href="#top">
     <img src="icon/arrow.png" class="back-to-top" alt="返回本頁頂部" width="26px">
-</a>
- <!-- 引入 navbar.js 文件 -->
- <script src="navbar.js"></script>
- <!-- 引入 footer.js 文件 -->
- <script src="footer.js"></script>
- <!-- 引入 modals.js 文件 -->
- <script src="modals.js"></script>
+   </a>
 
-<!-- Optional: Back-to-top button visibility -->
-<script>
-    // Show the button when user scrolls down
-    window.onscroll = function() {
-        const backToTopButton = document.querySelector('.back-to-top');
-        if (document.body.scrollTop > 300 || document.documentElement.scrollTop > 300) {
-            backToTopButton.style.display = 'block';
-        } else {
-            backToTopButton.style.display = 'none';
-        }
-    };
-</script>
-<!---------------------------------------- 分隔線 ------------------------------------->
+   <!-- 引入 navbar.js 文件 -->
+   <script src="navbar.js"></script>
+   <!-- 引入 footer.js 文件 -->
+   <script src="footer.js"></script>
+   <!-- 引入 modals.js 文件 -->
+   <script src="modals.js"></script>
+
+   <!-- Optional: Back-to-top button visibility -->
+   <script>
+        // Show the button when user scrolls down
+        window.onscroll = function() {
+            const backToTopButton = document.querySelector('.back-to-top');
+            if (document.body.scrollTop > 300 || document.documentElement.scrollTop > 300) {
+                backToTopButton.style.display = 'block';
+            } else {
+                backToTopButton.style.display = 'none';
+            }
+        };
+   </script>
+   <!---------------------------------------- 分隔線 ------------------------------------->
 </body>
 </html>
