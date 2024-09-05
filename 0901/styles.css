@@ -1,16 +1,20 @@
 /* 通用样式 */
 body {
-    font-family: Arial, sans-serif;
+    font-family: 'Noto Sans TC', Arial, sans-serif; /* 加入 Noto Sans 字体 */
     background-color: #f8f9fa;
     color: #333;
+    line-height: 1.6;
+    margin: 0;
+    padding: 0;
 }
 
 /* 标题样式 */
 h2 {
-    font-size: 2rem;
-    font-weight: 600;
+    font-size: 2.2rem;
+    font-weight: 700;
     color: #007bff;
-    margin-bottom: 1.5rem;
+    text-align: center;
+    margin-bottom: 2rem;
 }
 
 /* Accordion 样式 */
@@ -20,6 +24,8 @@ h2 {
     color: #007bff;
     background-color: #f8f9fa;
     border: none;
+    padding: 1rem;
+    transition: background-color 0.3s ease;
 }
 
 .accordion-button:focus {
@@ -36,18 +42,25 @@ h2 {
     font-size: 1rem;
     color: #555;
     background-color: #fff;
+    padding: 1.5rem;
+    line-height: 1.6;
 }
 
 /* 链接按钮样式 */
 a.btn-primary {
     background-color: #007bff;
     border-color: #007bff;
+    color: #fff;
+    font-size: 1rem;
+    padding: 0.6rem 1.2rem;
+    border-radius: 0.25rem;
     transition: background-color 0.3s ease, border-color 0.3s ease;
 }
 
 a.btn-primary:hover {
     background-color: #0056b3;
     border-color: #0056b3;
+    text-decoration: none;
 }
 
 /* 卡片样式 */
@@ -55,6 +68,9 @@ a.btn-primary:hover {
     border-radius: 0.5rem;
     overflow: hidden;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
+    background-color: #fff;
+    border: 1px solid #e9ecef;
+    margin-bottom: 1.5rem;
 }
 
 .card:hover {
@@ -64,12 +80,14 @@ a.btn-primary:hover {
 
 .card-img-top {
     border-bottom: 1px solid #e9ecef;
+    border-radius: 0.5rem 0.5rem 0 0;
 }
 
 .card-title {
-    font-size: 1.25rem;
+    font-size: 1.5rem;
     font-weight: 600;
     color: #007bff;
+    margin: 0.5rem 0;
 }
 
 .card-text {
@@ -80,7 +98,7 @@ a.btn-primary:hover {
 /* 页脚样式 */
 footer {
     background-color: #f8f9fa;
-    padding: 1rem 0;
+    padding: 1.5rem 0;
     border-top: 1px solid #e9ecef;
     text-align: center;
     color: #6c757d;
@@ -90,38 +108,88 @@ footer {
 footer a {
     color: #007bff;
     text-decoration: none;
+    font-weight: 600;
 }
 
 footer a:hover {
     color: #0056b3;
     text-decoration: underline;
 }
+
 /* Owl Carousel item container */
 .owl-theme .item {
     padding: 1rem;
     text-align: center;
     background: #f9f9f9;
+    border: 1px solid #ddd;
+    border-radius: 0.5rem;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-/* Styling for images within the carousel */
+.owl-theme .item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+}
+
+/* 图片样式 */
 .owl-carousel .item img {
     display: block;
     width: 100%;
     height: auto;
     object-fit: cover;
+    border-radius: 0.5rem;
 }
 
-/* Description text below each image */
+/* 描述文本样式 */
 .item-description {
     margin-top: 10px;
     text-align: left;
     font-size: 14px;
     color: #333;
+    line-height: 1.4;
 }
 
-/* Heading style for each item */
+/* 每个项目的标题样式 */
 .item h4 {
     margin-top: 15px;
     font-size: 18px;
     color: #333;
+    font-weight: 600;
+}
+
+/* 返回顶部按钮样式 */
+.back-to-top {
+    width: 50px;
+    height: 50px;
+    background-color: #007bff;
+    color: #fff;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background-color 0.3s ease;
+}
+
+.back-to-top img {
+    width: 24px;
+    height: 24px;
+}
+
+.back-to-top:hover {
+    background-color: #0056b3;
+}
+
+/* 使页面在较小屏幕上的表现更好 */
+@media (max-width: 768px) {
+    .accordion-button {
+        font-size: 1rem;
+    }
+
+    .card-title {
+        font-size: 1.2rem;
+    }
+
+    .accordion-body {
+        font-size: 0.9rem;
+    }
 }
