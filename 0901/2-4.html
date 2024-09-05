@@ -12,37 +12,74 @@
     <!-- Bootstrap JS and Popper.js -->
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.min.js"></script>
+
+    <style>
+        /* 置中區塊並加大寬度 */
+        .highlight-section {
+            padding: 20px;
+            margin: 20px 0;
+            background-color: #f8f9fa;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            max-width: 900px; /* 限制區塊的最大寬度 */
+            width: 100%; /* 區塊寬度設為100%以便響應式調整 */
+        }
+
+        /* 返回頂部按鈕樣式 */
+        .back-to-top {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            display: none;
+            z-index: 1000;
+            cursor: pointer;
+        }
+
+        /* 區塊標題樣式 */
+        h3 {
+            color: #007bff;
+        }
+    </style>
 </head>
 <body>
     <!-- Top Anchor -->
     <a name="top"></a>
-   <!---------------------------------------- 分隔線 -------------------------------------> 
 
-    <h2>生涯發展教育-特色及推動困難或建議</h2>
+    <h2 class="text-center my-4">生涯發展教育-特色及推動困難或建議</h2>
+
+    <!-- Section 1: 特色 -->
+    <div class="d-flex justify-content-center">
+        <div class="highlight-section" >
+            
+            <p>這一部分將介紹生涯發展教育的主要特色，說明其獨特之處以及在學生生涯發展中的關鍵角色。</p>
+        </div>
+    </div>
+
+
 
    <!---------------------------------------- 分隔線 ------------------------------------->
-   <a href="#top">
-    <img src="icon/arrow.png" class="back-to-top" alt="返回本頁頂部" width="26px">
-</a>
- <!-- 引入 navbar.js 文件 -->
- <script src="navbar.js"></script>
- <!-- 引入 footer.js 文件 -->
- <script src="footer.js"></script>
- <!-- 引入 modals.js 文件 -->
- <script src="modals.js"></script>
+    <a href="#top">
+        <img src="icon/arrow.png" class="back-to-top" alt="返回本頁頂部" width="26px">
+    </a>
 
-<!-- Optional: Back-to-top button visibility -->
-<script>
-    // Show the button when user scrolls down
-    window.onscroll = function() {
-        const backToTopButton = document.querySelector('.back-to-top');
-        if (document.body.scrollTop > 300 || document.documentElement.scrollTop > 300) {
-            backToTopButton.style.display = 'block';
-        } else {
-            backToTopButton.style.display = 'none';
-        }
-    };
-</script>
-<!---------------------------------------- 分隔線 ------------------------------------->
+    <!-- 引入 navbar.js 文件 -->
+    <script src="navbar.js"></script>
+    <!-- 引入 footer.js 文件 -->
+    <script src="footer.js"></script>
+    <!-- 引入 modals.js 文件 -->
+    <script src="modals.js"></script>
+
+    <!-- Optional: Back-to-top button visibility -->
+    <script>
+        // Show the button when user scrolls down
+        window.onscroll = function() {
+            const backToTopButton = document.querySelector('.back-to-top');
+            if (document.body.scrollTop > 300 || document.documentElement.scrollTop > 300) {
+                backToTopButton.style.display = 'block';
+            } else {
+                backToTopButton.style.display = 'none';
+            }
+        };
+    </script>
 </body>
 </html>

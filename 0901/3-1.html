@@ -1,10 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" href="logo.png" type="image/png">
-    <link rel="stylesheet" href="styles.css"> 
+    <link rel="stylesheet" href="styles.css">
     <title>行政與輔導</title>
 
     <!-- Bootstrap CSS -->
@@ -12,23 +13,118 @@
     <!-- Bootstrap JS and Popper.js -->
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.min.js"></script>
+
+    <style>
+        /* 統一的基本樣式 */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f6f9;
+            color: #333;
+            margin: 0;
+            padding: 0;
+        }
+
+        /* 統一標題樣式 */
+        h2, h3 {
+            font-weight: bold;
+            color: #007bff;
+        }
+
+        h2 {
+            font-size: 2.5rem;
+            text-align: center;
+            margin: 20px 0;
+        }
+
+        h3 {
+            font-size: 1.75rem;
+            margin-bottom: 20px;
+        }
+
+        /* 統一段落樣式 */
+        p {
+            font-size: 1.1rem;
+            line-height: 1.6;
+            color: #555;
+            margin-bottom: 20px;
+        }
+
+        /* 容器的間距和樣式 */
+        .container {
+            margin-top: 20px;
+            max-width: 1200px;
+        }
+
+        /* 統一分頁樣式 */
+        .pagination {
+            font-size: 1.2rem;
+            margin-bottom: 30px;
+        }
+
+        .page-item .page-link {
+            color: #007bff;
+            font-weight: bold;
+            transition: all 0.3s ease;
+        }
+
+        .page-item .page-link:hover {
+            background-color: #007bff;
+            color: #fff;
+        }
+
+        /* 統一返回頂部按鈕樣式 */
+        .back-to-top {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background-color: #007bff;
+            padding: 10px;
+            border-radius: 50%;
+            display: none;
+            z-index: 1000;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .back-to-top:hover {
+            background-color: #0056b3;
+        }
+
+        /* 響應式設計 */
+        @media (max-width: 768px) {
+            h2 {
+                font-size: 2rem;
+            }
+
+            h3 {
+                font-size: 1.5rem;
+            }
+
+            .pagination {
+                font-size: 1rem;
+            }
+
+            .back-to-top {
+                bottom: 20px;
+                right: 20px;
+            }
+        }
+    </style>
 </head>
+
 <body>
     <!-- Top Anchor -->
     <a name="top"></a>
-   <!---------------------------------------- 分隔線 -------------------------------------> 
 
     <div class="container">
-        <h2 class="my-4">技藝教育抽離式課程-行政與輔導</h2>
+        <h2 class="my-4 text-center">技藝教育抽離式課程-行政與輔導</h2>
 
         <!-- Pagination -->
         <nav aria-label="Page navigation example">
             <ul class="pagination justify-content-center">
-
                 <li class="page-item"><a class="page-link" href="#section1">組織運作</a></li>
                 <li class="page-item"><a class="page-link" href="#section2">宣導溝通</a></li>
                 <li class="page-item"><a class="page-link" href="#section3">轉出（入）之轉銜與輔導</a></li>
-
             </ul>
         </nav>
     </div>
@@ -51,29 +147,29 @@
         <p>轉銜與輔導的工作包括學生從一個教育機構到另一個機構的過渡，確保學生在轉出或轉入時得到適當的指導和支持。</p>
     </div>
 
-   <!---------------------------------------- 分隔線 ------------------------------------->
-   <a href="#top">
-    <img src="icon/arrow.png" class="back-to-top" alt="返回本頁頂部" width="26px">
-</a>
- <!-- 引入 navbar.js 文件 -->
- <script src="navbar.js"></script>
- <!-- 引入 footer.js 文件 -->
- <script src="footer.js"></script>
- <!-- 引入 modals.js 文件 -->
- <script src="modals.js"></script>
+    <!-- Back to top button -->
+    <a href="#top">
+        <img src="icon/arrow.png" class="back-to-top" alt="返回本頁頂部" width="26px">
+    </a>
 
-<!-- Optional: Back-to-top button visibility -->
-<script>
-    // Show the button when user scrolls down
-    window.onscroll = function() {
-        const backToTopButton = document.querySelector('.back-to-top');
-        if (document.body.scrollTop > 300 || document.documentElement.scrollTop > 300) {
-            backToTopButton.style.display = 'block';
-        } else {
-            backToTopButton.style.display = 'none';
-        }
-    };
-</script>
-<!---------------------------------------- 分隔線 ------------------------------------->
+    <!-- 引入 navbar.js 文件 -->
+    <script src="navbar.js"></script>
+    <!-- 引入 footer.js 文件 -->
+    <script src="footer.js"></script>
+    <!-- 引入 modals.js 文件 -->
+    <script src="modals.js"></script>
+
+    <!-- Optional: Back-to-top button visibility -->
+    <script>
+        window.onscroll = function () {
+            const backToTopButton = document.querySelector('.back-to-top');
+            if (document.body.scrollTop > 300 || document.documentElement.scrollTop > 300) {
+                backToTopButton.style.display = 'block';
+            } else {
+                backToTopButton.style.display = 'none';
+            }
+        };
+    </script>
 </body>
+
 </html>
