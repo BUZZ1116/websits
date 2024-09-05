@@ -2,7 +2,7 @@ function createNavBar() {
     const navBar = document.createElement('nav');
     navBar.className = 'navbar navbar-expand-lg sticky-top'; // Add sticky-top class
     navBar.style.backgroundColor = '#c0e6a5';
-    navBar.style.boxShadow = '0 4px 6px rgba(0, 0, 0, 0.1)'; // Adding shadow to navbar
+    navBar.style.boxShadow = '0 4px 6px rgba(0, 0, 0, 0.5)'; // Adding shadow to navbar
 
     const containerDiv = document.createElement('div');
     containerDiv.className = 'container-fluid';
