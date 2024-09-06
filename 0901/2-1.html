@@ -151,33 +151,13 @@
             <div class="highlight-section" id="section1">
                 <h3 class="mb-3">生涯發展教育工作執行委員會</h3>
 
-                <!-- Cards -->
+                <!--生涯發展教育工作執行委員會 Cards -->
                 <div class="container">
                     <div class="row">
                         <!-- Corrected Modal and Card IDs -->
-                        <div class="col-md-4 mb-4">
-                            <div class="card">
-                                <img src="211/A.jpg" class="card-img-top" alt="Image A" data-bs-toggle="modal" data-bs-target="#imageModalA">
-                            </div>
-                        </div>
-                        <div class="col-md-4 mb-4">
-                            <div class="card">
-                                <img src="211/B.jpg" class="card-img-top" alt="Image B" data-bs-toggle="modal" data-bs-target="#imageModalB">
-                            </div>
-                        </div>
-                        <div class="col-md-4 mb-4">
-                            <div class="card">
-                                <img src="211/C.jpg" class="card-img-top" alt="Image C" data-bs-toggle="modal" data-bs-target="#imageModalC">
-                            </div>
-                        </div>
-                        <div class="col-md-4 mb-4">
-                            <div class="card">
-                                <img src="211/D.jpg" class="card-img-top" alt="Image D" data-bs-toggle="modal" data-bs-target="#imageModalD">
-                            </div>
-                        </div>
-                        <div class="col-md-4 mb-4">
-                            <div class="card">
-                                <img src="211/E.jpg" class="card-img-top" alt="Image E" data-bs-toggle="modal" data-bs-target="#imageModalE">
+                        <div class="container">
+                            <div class="row" id="imageCardsContainer">
+                                <!-- 卡片將會由 JavaScript 動態插入 -->
                             </div>
                         </div>
                     </div>
@@ -185,7 +165,7 @@
             </div>
         </div>
 
-        <!-- Modals for Images -->
+        <!-- Modals for Images 生涯發展教育工作執行委員會 -->
         <div class="modal fade" id="imageModalA" tabindex="-1" aria-labelledby="imageModalALabel" aria-hidden="true">
             <div class="modal-dialog modal-lg">
                 <div class="modal-content">
@@ -549,6 +529,36 @@
                 backToTopButton.style.display = 'none';
             }
         };
+     
+        const images = [
+            { src: "211/A.jpg", alt: "Image A", modalId: "imageModalA" },
+            { src: "211/B.jpg", alt: "Image B", modalId: "imageModalB" },
+            { src: "211/C.jpg", alt: "Image C", modalId: "imageModalC" },
+            { src: "211/D.jpg", alt: "Image D", modalId: "imageModalD" },
+            { src: "211/E.jpg", alt: "Image E", modalId: "imageModalE" }
+        ];
+
+        window.onload = function() {
+            const container = document.getElementById('imageCardsContainer');
+            
+            images.forEach(image => {
+                const colDiv = document.createElement('div');
+                colDiv.classList.add('col-md-4', 'mb-4');
+                const cardDiv = document.createElement('div');
+                cardDiv.classList.add('card');
+                const img = document.createElement('img');
+                img.src = image.src;
+                img.alt = image.alt;
+                img.classList.add('card-img-top');
+                img.setAttribute('data-bs-toggle', 'modal');
+                img.setAttribute('data-bs-target', `#${image.modalId}`);
+                cardDiv.appendChild(img);
+                colDiv.appendChild(cardDiv);
+                container.appendChild(colDiv);
+            });
+        };
+        
+ 
     </script>
 </body>
 </html>
