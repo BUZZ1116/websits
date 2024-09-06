@@ -11,68 +11,65 @@
     <!-- Bootstrap JS and Popper.js -->
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.min.js"></script>
-    
+
     <style>
         html {
             scroll-behavior: smooth;
         }
-
         body {
-            background-color: #f8f9fa;
             font-family: Arial, sans-serif;
+            background-color: #f4f6f9;
+            color: #333;
+            margin: 0;
+            padding: 0;
         }
 
-        .text-center {
-            color: #2c3e50;
+        /* 標題樣式 */
+        h2 {
+            font-size: 2.5rem;
             font-weight: bold;
-        }
-
-        .pagination {
-            font-size: 1.1em;
-            margin-bottom: 30px;
-        }
-
-        .page-item .page-link {
-            color: #3498db;
-            font-weight: bold;
-        }
-
-        .page-item .page-link:hover {
-            background-color: #3498db;
-            color: #fff;
+            color: #007bff;
+            text-align: center;
+            margin: 20px 0;
         }
 
         h3 {
-            color: #2980b9;
+            font-size: 1.75rem;
+            color: #007bff;
+            margin-bottom: 15px;
         }
 
-        /* Card style */
-        .card {
-            border: 1px solid #ddd;
-            transition: transform 0.3s ease;
-            box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+        /* 統一段落樣式 */
+        p {
+            font-size: 1.1rem;
+            line-height: 1.6;
+            color: #555;
+            margin-bottom: 20px;
         }
 
-        .card:hover {
-            transform: scale(1.05);
+        /* Highlight section 統一樣式 */
+        .highlight-section {
+            padding: 25px;
+            margin: 20px auto;
+            background-color: #ffffff;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            max-width: 900px;
+            width: 100%;
+            transition: all 0.3s ease;
         }
 
-        .card img {
-            height: 200px;
-            object-fit: cover;
+        .highlight-section:hover {
+            background-color: #f1f3f5;
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
         }
 
-        .modal-body img {
-            max-width: 100%;
-            height: auto;
-        }
-
-        /* Back to top button */
+        /* 返回頂部按鈕樣式 */
         .back-to-top {
             position: fixed;
             bottom: 30px;
             right: 30px;
-            background-color: #2980b9;
+            background-color: #007bff;
             padding: 10px;
             border-radius: 50%;
             display: none;
@@ -82,22 +79,52 @@
         }
 
         .back-to-top:hover {
-            background-color: #3498db;
+            background-color: #0056b3;
         }
 
-        /* Responsive adjustments */
-        @media (max-width: 768px) {
-            .card img {
-                height: auto;
+        /* 分頁樣式 */
+        .pagination {
+            font-size: 1.2rem;
+            margin-bottom: 30px;
+        }
+
+        .page-item .page-link {
+            color: #007bff;
+            font-weight: bold;
+            transition: all 0.3s ease;
+        }
+
+        .page-item .page-link:hover {
+            background-color: #007bff;
+            color: #fff;
+        }
+
+        /* 調整 Modal 彈窗 */
+        .modal-body img {
+            max-width: 100%;
+            height: auto;
+        }
+               /* 響應式設計 */
+               @media (max-width: 768px) {
+            h2 {
+                font-size: 2rem;
+            }
+
+            h3 {
+                font-size: 1.5rem;
+            }
+
+            .highlight-section {
+                padding: 15px;
+            }
+
+            .pagination {
+                font-size: 1rem;
             }
 
             .back-to-top {
                 bottom: 20px;
                 right: 20px;
-            }
-
-            .pagination {
-                font-size: 0.9em;
             }
         }
     </style>
@@ -105,10 +132,9 @@
 <body>
     <!-- Top Anchor -->
     <a name="top"></a>
-   <!---------------------------------------- 分隔線 -------------------------------------> 
-    
    
-   <h2 class="text-center my-4">生涯發展教育-行政措施與組織運作</h2> 
+    <h2 class="text-center">生涯發展教育-行政措施與組織運作</h2> 
+
     <!-- Pagination -->
     <nav aria-label="Page navigation example" class="mb-4">
         <ul class="pagination justify-content-center">
@@ -121,403 +147,400 @@
 
     <!-- Sections -->
     <div class="container">
-        <!-- Section 1: 生涯發展教育工作執行委員會 -->
-        <div class="row mb-4" id="section1">
-            <h3 class="mb-3">※生涯發展教育工作執行委員會--</h3>
+        <div class="d-flex justify-content-center">
+            <div class="highlight-section" id="section1">
+                <h3 class="mb-3">生涯發展教育工作執行委員會</h3>
 
-            <!-- Cards -->
-            <div class="container">
-                <div class="row">
-                    <!-- Card 1 -->
-                    <div class="col-md-4 mb-4">
-                        <div class="card">
-                            <img src="211/A.jpg" class="card-img-top" alt="Image A" data-bs-toggle="modal" data-bs-target="#imageModalA">
+                <!-- Cards -->
+                <div class="container">
+                    <div class="row">
+                        <!-- Corrected Modal and Card IDs -->
+                        <div class="col-md-4 mb-4">
+                            <div class="card">
+                                <img src="211/A.jpg" class="card-img-top" alt="Image A" data-bs-toggle="modal" data-bs-target="#imageModalA">
+                            </div>
                         </div>
-                    </div>
-            
-                    <!-- Card 2 -->
-                    <div class="col-md-4 mb-4">
-                        <div class="card">
-                            <img src="211/B.jpg" class="card-img-top" alt="Image B" data-bs-toggle="modal" data-bs-target="#imageModalB">
+                        <div class="col-md-4 mb-4">
+                            <div class="card">
+                                <img src="211/B.jpg" class="card-img-top" alt="Image B" data-bs-toggle="modal" data-bs-target="#imageModalB">
+                            </div>
                         </div>
-                    </div>
-            
-                    <!-- Card 3 -->
-                    <div class="col-md-4 mb-4">
-                        <div class="card">
-                            <img src="211/C.jpg" class="card-img-top" alt="Image C" data-bs-toggle="modal" data-bs-target="#imageModalC">
+                        <div class="col-md-4 mb-4">
+                            <div class="card">
+                                <img src="211/C.jpg" class="card-img-top" alt="Image C" data-bs-toggle="modal" data-bs-target="#imageModalC">
+                            </div>
                         </div>
-                    </div>
-            
-                    <!-- Card 4 -->
-                    <div class="col-md-4 mb-4">
-                        <div class="card">
-                            <img src="211/D.jpg" class="card-img-top" alt="Image D" data-bs-toggle="modal" data-bs-target="#imageModalD">
+                        <div class="col-md-4 mb-4">
+                            <div class="card">
+                                <img src="211/D.jpg" class="card-img-top" alt="Image D" data-bs-toggle="modal" data-bs-target="#imageModalD">
+                            </div>
                         </div>
-                    </div>
-            
-                    <!-- Card 5 -->
-                    <div class="col-md-4 mb-4">
-                        <div class="card">
-                            <img src="211/E.jpg" class="card-img-top" alt="Image E" data-bs-toggle="modal" data-bs-target="#imageModalE">
+                        <div class="col-md-4 mb-4">
+                            <div class="card">
+                                <img src="211/E.jpg" class="card-img-top" alt="Image E" data-bs-toggle="modal" data-bs-target="#imageModalE">
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
-            
-            <!-- Modal for Image A -->
-            <div class="modal fade" id="imageModalA" tabindex="-1" aria-labelledby="imageModalALabel" aria-hidden="true">
-                <div class="modal-dialog modal-lg">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                        </div>
-                        <div class="modal-body">
-                            <img src="211/A.jpg" class="img-fluid" alt="Image A">
-                        </div>
-                    </div>
-                </div>
-            </div>
-            
-            <!-- Modal for Image B -->
-            <div class="modal fade" id="imageModalB" tabindex="-1" aria-labelledby="imageModalBLabel" aria-hidden="true">
-                <div class="modal-dialog modal-lg">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                        </div>
-                        <div class="modal-body">
-                            <img src="211/B.jpg" class="img-fluid" alt="Image B">
-                        </div>
-                    </div>
-                </div>
-            </div>
-            
-            <!-- Modal for Image C -->
-            <div class="modal fade" id="imageModalC" tabindex="-1" aria-labelledby="imageModalCLabel" aria-hidden="true">
-                <div class="modal-dialog modal-lg">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                        </div>
-                        <div class="modal-body">
-                            <img src="211/C.jpg" class="img-fluid" alt="Image C">
-                        </div>
-                    </div>
-                </div>
-            </div>
-            
-            <!-- Modal for Image D -->
-            <div class="modal fade" id="imageModalD" tabindex="-1" aria-labelledby="imageModalDLabel" aria-hidden="true">
-                <div class="modal-dialog modal-lg">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                        </div>
-                        <div class="modal-body">
-                            <img src="211/D.jpg" class="img-fluid" alt="Image D">
-                        </div>
-                    </div>
-                </div>
-            </div>
-            
-            <!-- Modal for Image E -->
-            <div class="modal fade" id="imageModalE" tabindex="-1" aria-labelledby="imageModalELabel" aria-hidden="true">
-                <div class="modal-dialog modal-lg">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                        </div>
-                        <div class="modal-body">
-                            <img src="211/E.jpg" class="img-fluid" alt="Image E">
-                        </div>
-                    </div>
-                </div>
-            </div>
-            
+        </div>
 
+        <!-- Modals for Images -->
+        <div class="modal fade" id="imageModalA" tabindex="-1" aria-labelledby="imageModalALabel" aria-hidden="true">
+            <div class="modal-dialog modal-lg">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <img src="211/A.jpg" class="img-fluid" alt="Image A">
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="modal fade" id="imageModalB" tabindex="-1" aria-labelledby="imageModalBLabel" aria-hidden="true">
+            <div class="modal-dialog modal-lg">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <img src="211/B.jpg" class="img-fluid" alt="Image B">
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="modal fade" id="imageModalC" tabindex="-1" aria-labelledby="imageModalCLabel" aria-hidden="true">
+            <div class="modal-dialog modal-lg">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <img src="211/C.jpg" class="img-fluid" alt="Image C">
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="modal fade" id="imageModalD" tabindex="-1" aria-labelledby="imageModalDLabel" aria-hidden="true">
+            <div class="modal-dialog modal-lg">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <img src="211/D.jpg" class="img-fluid" alt="Image D">
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="modal fade" id="imageModalE" tabindex="-1" aria-labelledby="imageModalELabel" aria-hidden="true">
+            <div class="modal-dialog modal-lg">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <img src="211/E.jpg" class="img-fluid" alt="Image E">
+                    </div>
+                </div>
+            </div>
+        </div>
 
         <!-- Section 2: 技藝教育遴薦及輔導機制 -->
-        <div class="row mb-4" id="section2">
-            <h3 class="mb-3">※技藝教育遴薦及輔導機制--</h3>
-        
-<!-- Cards -->
-<div class="col-md-4 mb-4">
-    <div class="card">
-        <img src="212/A.jpg" class="card-img-top" alt="Image A" data-bs-toggle="modal" data-bs-target="#modalA">
-    </div>
-</div>
-<div class="col-md-4 mb-4">
-    <div class="card">
-        <img src="212/B.jpg" class="card-img-top" alt="Image B" data-bs-toggle="modal" data-bs-target="#modalB">
-    </div>
-</div>
-<div class="col-md-4 mb-4">
-    <div class="card">
-        <img src="212/C.jpg" class="card-img-top" alt="Image C" data-bs-toggle="modal" data-bs-target="#modalC">
-    </div>
-</div>
-<div class="col-md-4 mb-4">
-    <div class="card">
-        <img src="212/D.jpg" class="card-img-top" alt="Image D" data-bs-toggle="modal" data-bs-target="#modalD">
-    </div>
-</div>
-<div class="col-md-4 mb-4">
-    <div class="card">
-        <img src="212/E.jpg" class="card-img-top" alt="Image E" data-bs-toggle="modal" data-bs-target="#modalE">
-    </div>
-</div>
-<div class="col-md-4 mb-4">
-    <div class="card">
-        <img src="212/F.jpg" class="card-img-top" alt="Image F" data-bs-toggle="modal" data-bs-target="#modalF">
-    </div>
-</div>
-<div class="col-md-4 mb-4">
-    <div class="card">
-        <img src="212/G.jpg" class="card-img-top" alt="Image G" data-bs-toggle="modal" data-bs-target="#modalG">
-    </div>
-</div>
-<div class="col-md-4 mb-4">
-    <div class="card">
-        <img src="212/H.jpg" class="card-img-top" alt="Image H" data-bs-toggle="modal" data-bs-target="#modalH">
-    </div>
-</div>
-<div class="col-md-4 mb-4">
-    <div class="card">
-        <img src="212/I.jpg" class="card-img-top" alt="Image I" data-bs-toggle="modal" data-bs-target="#modalI">
-    </div>
-</div>
-<div class="col-md-4 mb-4">
-    <div class="card">
-        <img src="212/J.jpg" class="card-img-top" alt="Image J" data-bs-toggle="modal" data-bs-target="#modalJ">
-    </div>
-</div>
-<div class="col-md-4 mb-4">
-    <div class="card">
-        <img src="212/N.jpg" class="card-img-top" alt="Image M" data-bs-toggle="modal" data-bs-target="#modalN">
-    </div>
-</div>
+        <div class="d-flex justify-content-center">
+            <div class="highlight-section" id="section2">
+                <h3 class="mb-3">技藝教育遴薦及輔導機制</h3>
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-4 mb-4">
+                            <div class="card">
+                                <img src="212/A.jpg" class="card-img-top" alt="Image A" data-bs-toggle="modal" data-bs-target="#imageModal2A">
+                            </div>
+                        </div>
+                        <div class="col-md-4 mb-4">
+                            <div class="card">
+                                <img src="212/B.jpg" class="card-img-top" alt="Image B" data-bs-toggle="modal" data-bs-target="#imageModal2B">
+                            </div>
+                        </div>
+                        <div class="col-md-4 mb-4">
+                            <div class="card">
+                                <img src="212/C.jpg" class="card-img-top" alt="Image C" data-bs-toggle="modal" data-bs-target="#imageModal2C">
+                            </div>
+                        </div>
+                        <div class="col-md-4 mb-4">
+                            <div class="card">
+                                <img src="212/D.jpg" class="card-img-top" alt="Image D" data-bs-toggle="modal" data-bs-target="#imageModal2D">
+                            </div>
+                        </div>
+                        <div class="col-md-4 mb-4">
+                            <div class="card">
+                                <img src="212/E.jpg" class="card-img-top" alt="Image E" data-bs-toggle="modal" data-bs-target="#imageModal2E">
+                            </div>
+                        </div>
+                        <div class="col-md-4 mb-4">
+                            <div class="card">
+                                <img src="212/F.jpg" class="card-img-top" alt="Image B" data-bs-toggle="modal" data-bs-target="#imageModal2F">
+                            </div>
+                        </div>
+                        <div class="col-md-4 mb-4">
+                            <div class="card">
+                                <img src="212/G.jpg" class="card-img-top" alt="Image C" data-bs-toggle="modal" data-bs-target="#imageModal2G">
+                            </div>
+                        </div>
+                        <div class="col-md-4 mb-4">
+                            <div class="card">
+                                <img src="212/H.jpg" class="card-img-top" alt="Image D" data-bs-toggle="modal" data-bs-target="#imageModal2H">
+                            </div>
+                        </div>
+                        <div class="col-md-4 mb-4">
+                            <div class="card">
+                                <img src="212/I.jpg" class="card-img-top" alt="Image E" data-bs-toggle="modal" data-bs-target="#imageModal2I">
+                            </div>
+                        </div>
+                        <div class="col-md-4 mb-4">
+                            <div class="card">
+                                <img src="212/J.jpg" class="card-img-top" alt="Image B" data-bs-toggle="modal" data-bs-target="#imageModal2J">
+                            </div>
+                        </div>
+                        <div class="col-md-4 mb-4">
+                            <div class="card">
+                                <img src="212/N.jpg" class="card-img-top" alt="Image C" data-bs-toggle="modal" data-bs-target="#imageModal2N">
+                            </div>
+                        </div>
+                        <div class="col-md-4 mb-4">
+                            <div class="card">
+                                <img src="212/O.jpg" class="card-img-top" alt="Image D" data-bs-toggle="modal" data-bs-target="#imageModal2O">
+                            </div>
+                        </div>
+                        <div class="col-md-4 mb-4">
+                            <div class="card">
+                                <img src="212/P.jpg" class="card-img-top" alt="Image E" data-bs-toggle="modal" data-bs-target="#imageModal2P">
+                            </div>
+                        </div>
 
-<div class="col-md-4 mb-4">
-    <div class="card">
-        <img src="212/o.jpg" class="card-img-top" alt="Image O" data-bs-toggle="modal" data-bs-target="#modalO">
-    </div>
-</div>
-<div class="col-md-4 mb-4">
-    <div class="card">
-        <img src="212/p.jpg" class="card-img-top" alt="Image P" data-bs-toggle="modal" data-bs-target="#modalP">
-    </div>
-</div>
-
-<!-- Modal for each card -->
-<div class="modal fade" id="modalA" tabindex="-1" aria-labelledby="modalALabel" aria-hidden="true">
-    <div class="modal-dialog modal-lg">
-        <div class="modal-content">
-            <div class="modal-header">
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body">
-                <img src="212/A.jpg" class="img-fluid" alt="Image A">
-            </div>
-        </div>
-    </div>
-</div>
-
-<div class="modal fade" id="modalB" tabindex="-1" aria-labelledby="modalBLabel" aria-hidden="true">
-    <div class="modal-dialog modal-lg">
-        <div class="modal-content">
-            <div class="modal-header">
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body">
-                <img src="212/B.jpg" class="img-fluid" alt="Image B">
-            </div>
-        </div>
-    </div>
-</div>
-
-<div class="modal fade" id="modalC" tabindex="-1" aria-labelledby="modalCLabel" aria-hidden="true">
-    <div class="modal-dialog modal-lg">
-        <div class="modal-content">
-            <div class="modal-header">
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body">
-                <img src="212/C.jpg" class="img-fluid" alt="Image C">
-            </div>
-        </div>
-    </div>
-</div>
-
-<div class="modal fade" id="modalD" tabindex="-1" aria-labelledby="modalDLabel" aria-hidden="true">
-    <div class="modal-dialog modal-lg">
-        <div class="modal-content">
-            <div class="modal-header">
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body">
-                <img src="212/D.jpg" class="img-fluid" alt="Image D">
-            </div>
-        </div>
-    </div>
-</div>
-<div class="modal fade" id="modalE" tabindex="-1" aria-labelledby="modalDLabel" aria-hidden="true">
-    <div class="modal-dialog modal-lg">
-        <div class="modal-content">
-            <div class="modal-header">
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body">
-                <img src="212/E.jpg" class="img-fluid" alt="Image D">
-            </div>
-        </div>
-    </div>
-</div>
-<div class="modal fade" id="modalF" tabindex="-1" aria-labelledby="modalDLabel" aria-hidden="true">
-    <div class="modal-dialog modal-lg">
-        <div class="modal-content">
-            <div class="modal-header">
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body">
-                <img src="212/F.jpg" class="img-fluid" alt="Image D">
-            </div>
-        </div>
-    </div>
-</div>
-<div class="modal fade" id="modalG" tabindex="-1" aria-labelledby="modalDLabel" aria-hidden="true">
-    <div class="modal-dialog modal-lg">
-        <div class="modal-content">
-            <div class="modal-header">
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body">
-                <img src="212/G.jpg" class="img-fluid" alt="Image D">
-            </div>
-        </div>
-    </div>
-</div>
-<div class="modal fade" id="modalH" tabindex="-1" aria-labelledby="modalDLabel" aria-hidden="true">
-    <div class="modal-dialog modal-lg">
-        <div class="modal-content">
-            <div class="modal-header">
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body">
-                <img src="212/H.jpg" class="img-fluid" alt="Image D">
-            </div>
-        </div>
-    </div>
-</div>
-<div class="modal fade" id="modalI" tabindex="-1" aria-labelledby="modalDLabel" aria-hidden="true">
-    <div class="modal-dialog modal-lg">
-        <div class="modal-content">
-            <div class="modal-header">
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body">
-                <img src="212/I.jpg" class="img-fluid" alt="Image D">
-            </div>
-        </div>
-    </div>
-</div>
-<div class="modal fade" id="modalJ" tabindex="-1" aria-labelledby="modalDLabel" aria-hidden="true">
-    <div class="modal-dialog modal-lg">
-        <div class="modal-content">
-            <div class="modal-header">
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body">
-                <img src="212/J.jpg" class="img-fluid" alt="Image D">
-            </div>
-        </div>
-    </div>
-</div>
-<div class="modal fade" id="modalN" tabindex="-1" aria-labelledby="modalDLabel" aria-hidden="true">
-    <div class="modal-dialog modal-lg">
-        <div class="modal-content">
-            <div class="modal-header">
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body">
-                <img src="212/N.jpg" class="img-fluid" alt="Image D">
-            </div>
-        </div>
-    </div>
-</div>
-<div class="modal fade" id="modalO" tabindex="-1" aria-labelledby="modalDLabel" aria-hidden="true">
-    <div class="modal-dialog modal-lg">
-        <div class="modal-content">
-            <div class="modal-header">
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body">
-                <img src="212/O.jpg" class="img-fluid" alt="Image D">
-            </div>
-        </div>
-    </div>
-</div>
-<div class="modal fade" id="modalP" tabindex="-1" aria-labelledby="modalDLabel" aria-hidden="true">
-    <div class="modal-dialog modal-lg">
-        <div class="modal-content">
-            <div class="modal-header">
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body">
-                <img src="212/P.jpg" class="img-fluid" alt="Image D">
-            </div>
-        </div>
-    </div>
-</div>
-            <!-- PDF Card -->
-            <div class="col-md-4 mb-4">
-                <div class="card">
-                    <iframe src="212/K.pdf" class="card-img-top" style="width: 100%; height: 400px;" frameborder="0"></iframe>
-                    <div class="card-body">
-                        <a href="212/K.pdf" class="btn btn-primary" download>下載 PDF</a>
-                    </div>
+        <!-- Section 2: 技藝教育遴薦及輔導機制 pdf Cards-->
+        <div class="col-md-4 mb-4">
+            <div class="card">
+                <iframe src="212/K.pdf" class="card-img-top" style="height: 400px;" frameborder="0"></iframe>
+                <div class="card-body">
+                    <a href="212/K.pdf" class="btn btn-primary" download>下載 PDF</a>
                 </div>
             </div>
-            <div class="col-md-4 mb-4">
-                <div class="card">
-                    <iframe src="212/M.pdf" class="card-img-top" style="width: 100%; height: 400px;" frameborder="0"></iframe>
-                    <div class="card-body">
-                        <a href="212/M.pdf" class="btn btn-primary" download>下載 PDF</a>
+        </div>
+        <div class="col-md-4 mb-4">
+            <div class="card">
+                <iframe src="212/M.pdf" class="card-img-top" style="height: 400px;" frameborder="0"></iframe>
+                <div class="card-body">
+                    <a href="212/M.pdf" class="btn btn-primary" download>下載 PDF</a>
+                </div>
+            </div>
+        </div>
                     </div>
                 </div>
             </div>
         </div>
 
-        <!-- Section 3 -->
+        <!-- Section 2: 技藝教育遴薦及輔導機制 Modals for Images-->
+        <div class="modal fade" id="imageModal2A" tabindex="-1" aria-labelledby="imageModalALabel" aria-hidden="true">
+            <div class="modal-dialog modal-lg">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <img src="212/A.jpg" class="img-fluid" alt="Image A">
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="modal fade" id="imageModal2B" tabindex="-1" aria-labelledby="imageModal2BLabel" aria-hidden="true">
+            <div class="modal-dialog modal-lg">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <img src="212/B.jpg" class="img-fluid" alt="Image B">
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="modal fade" id="imageModal2C" tabindex="-1" aria-labelledby="imageModal2CLabel" aria-hidden="true">
+            <div class="modal-dialog modal-lg">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <img src="212/C.jpg" class="img-fluid" alt="Image C">
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="modal fade" id="imageModal2D" tabindex="-1" aria-labelledby="imageModal2DLabel" aria-hidden="true">
+            <div class="modal-dialog modal-lg">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <img src="212/D.jpg" class="img-fluid" alt="Image D">
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="modal fade" id="imageModal2E" tabindex="-1" aria-labelledby="imageModal2ELabel" aria-hidden="true">
+            <div class="modal-dialog modal-lg">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <img src="212/E.jpg" class="img-fluid" alt="Image E">
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="modal fade" id="imageModal2F" tabindex="-1" aria-labelledby="imageModal2BLabel" aria-hidden="true">
+            <div class="modal-dialog modal-lg">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <img src="212/F.jpg" class="img-fluid" alt="Image B">
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="modal fade" id="imageModal2G" tabindex="-1" aria-labelledby="imageModal2CLabel" aria-hidden="true">
+            <div class="modal-dialog modal-lg">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <img src="212/G.jpg" class="img-fluid" alt="Image C">
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="modal fade" id="imageModal2H" tabindex="-1" aria-labelledby="imageModal2DLabel" aria-hidden="true">
+            <div class="modal-dialog modal-lg">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <img src="212/H.jpg" class="img-fluid" alt="Image D">
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="modal fade" id="imageModal2I" tabindex="-1" aria-labelledby="imageModal2ELabel" aria-hidden="true">
+            <div class="modal-dialog modal-lg">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <img src="212/I.jpg" class="img-fluid" alt="Image E">
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="modal fade" id="imageModal2J" tabindex="-1" aria-labelledby="imageModal2BLabel" aria-hidden="true">
+            <div class="modal-dialog modal-lg">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <img src="212/J.jpg" class="img-fluid" alt="Image B">
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="modal fade" id="imageModal2N" tabindex="-1" aria-labelledby="imageModal2CLabel" aria-hidden="true">
+            <div class="modal-dialog modal-lg">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <img src="212/N.jpg" class="img-fluid" alt="Image C">
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="modal fade" id="imageModal2O" tabindex="-1" aria-labelledby="imageModal2DLabel" aria-hidden="true">
+            <div class="modal-dialog modal-lg">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <img src="212/O.jpg" class="img-fluid" alt="Image D">
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="modal fade" id="imageModal2P" tabindex="-1" aria-labelledby="imageModal2ELabel" aria-hidden="true">
+            <div class="modal-dialog modal-lg">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <img src="212/P.jpg" class="img-fluid" alt="Image E">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Section 3: 生涯發展教育相關研習 -->
         <div class="row mb-4" id="section3">
-            <h3 class="mb-3">※生涯發展教育相關研習---</h3>
-            <!-- Content for Section 3 -->
+            <h3 class="mb-3">生涯發展教育相關研習</h3>
             <p>此區域內容是生涯發展教育相關研習的相關資料。</p>
         </div>
 
-        <!-- Section 4 -->
+        <!-- Section 4: 資源運用 -->
         <div class="row mb-4" id="section4">
-            <h3 class="mb-3">※資源運用--</h3>
-            <!-- Content for Section 4 -->
+            <h3 class="mb-3">資源運用</h3>
             <p>此區域內容是資源運用的相關資料。</p>
         </div>
     </div>
 
-
-   <!---------------------------------------- 分隔線 ------------------------------------->
+    <!-- Back-to-top Button -->
     <a href="#top">
         <img src="icon/arrow.png" class="back-to-top" alt="返回本頁頂部" width="26px">
     </a>
-     <!-- 引入 navbar.js 文件 -->
-     <script src="navbar.js"></script>
-     <!-- 引入 footer.js 文件 -->
-     <script src="footer.js"></script>
-     <!-- 引入 modals.js 文件 -->
-     <script src="modals.js"></script>
+
+    <!-- 引入 navbar.js 文件 -->
+    <script src="navbar.js"></script>
+    <!-- 引入 footer.js 文件 -->
+    <script src="footer.js"></script>
+    <!-- 引入 modals.js 文件 -->
+    <script src="modals.js"></script>
 
     <!-- Optional: Back-to-top button visibility -->
     <script>
-        // Show the button when user scrolls down
         window.onscroll = function() {
             const backToTopButton = document.querySelector('.back-to-top');
             if (document.body.scrollTop > 300 || document.documentElement.scrollTop > 300) {
@@ -527,6 +550,5 @@
             }
         };
     </script>
-    <!---------------------------------------- 分隔線 ------------------------------------->
 </body>
 </html>
