@@ -20,12 +20,30 @@
     
     <!-- Canonical URL -->
     <link rel="canonical" href="https://buzz1116.github.io/websits/f8629/">
+
+    <!-- Favicon -->
+    <link rel="icon" href="img/favicon.ico" type="image/x-icon">
     
     <!-- External Stylesheets -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.theme.default.min.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <link rel="stylesheet" href="styles.css">
+    
+    <!-- Structured Data (Schema Markup) -->
+    <script type="application/ld+json">
+    {
+      "@context": "http://schema.org",
+      "@type": "LocalBusiness",
+      "name": "專淫本土妹妹-安寶",
+      "description": "安寶提供台中、新竹、彰化、南投、高雄等區域的專業服務，聯繫方式加賴id：f8629。",
+      "url": "https://buzz1116.github.io/websits/f8629/",
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "台中, 新竹, 彰化, 南投, 高雄"
+      }
+    }
+    </script>
 </head>
 
 <body>
@@ -39,7 +57,7 @@
         <!-- Image Carousel -->
         <div class="owl-carousel owl-theme">
             <div class="item" v-for="(image, index) in images" :key="index" @click="showModal(image)">
-                <img :src="image" :alt="`專淫本土妹妹圖片 ${index + 1}`">
+                <img :src="image" :alt="`專淫本土妹妹安寶 - 圖片 ${index + 1}`" loading="lazy">
             </div>
         </div>
 
@@ -54,7 +72,7 @@
                         </button>
                     </div>
                     <div class="modal-body">
-                        <img :src="modalImage" class="img-fluid" alt="專淫本土妹妹圖片預覽">
+                        <img :src="modalImage" class="img-fluid" alt="專淫本土妹妹安寶圖片預覽">
                     </div>
                 </div>
             </div>
