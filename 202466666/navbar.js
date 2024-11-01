@@ -18,7 +18,7 @@ function createNavBar() {
 
     const text1 = document.createElement('div');
     text1.style.fontWeight = 'bold';
-    text1.style.fontSize = '26px'; // Set font size to 26px
+    text1.style.fontSize = '28px'; // Set font size to 26px
     text1.style.color = 'blue'; // Set font color to blue
     text1.className = 'floating-text'; // Add a class for the hover effect
     text1.textContent = '东京'; // Display text in simplified Chinese
