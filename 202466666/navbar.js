@@ -78,12 +78,29 @@ function createNavBar() {
 
     document.body.prepend(navBar);
 
-    // Add CSS for hover effect
+    // Add CSS for hover effect with underline expanding from center
     const style = document.createElement('style');
     style.innerHTML = `
-        .nav-link:hover {
-            color: red !important; /* Red color on hover */
-            text-decoration: underline; /* Add underline on hover */
+        .nav-link {
+            position: relative;
+            text-decoration: none;
+            color: inherit;
+        }
+
+        .nav-link::after {
+            content: "";
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: 0;
+            left: 50%;
+            background-color: red;
+            transition: all 0.3s ease;
+            transform: translateX(-50%);
+        }
+
+        .nav-link:hover::after {
+            width: 100%;
         }
     `;
     document.head.appendChild(style);
