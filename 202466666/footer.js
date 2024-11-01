@@ -55,9 +55,9 @@ function createFooter() {
             </ul>
         </div>
         <div>
-            <strong>新竹配送區域：</strong>
+            <strong>新竹：5K起跳：</strong>
             <ul>
-                <li>新竹：5K起跳</li>
+                
                 <li>中南部：最低3.5K起，有4K、5K、6K、8K、10K、12K到50K</li>
             </ul>
         </div>

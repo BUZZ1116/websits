@@ -21,7 +21,7 @@ function createNavBar() {
     text1.style.fontSize = '30px'; // Set font size to 26px
     text1.style.color = 'blue'; // Set font color to blue
     text1.className = 'floating-text'; // Add a class for the hover effect
-    text1.textContent = '安寶外約茶坊'; // Display text in simplified Chinese
+    text1.textContent = '台灣專淫本土妹妹'; // Display text in simplified Chinese
 
     textContainer.appendChild(text1);
     brandLink.appendChild(textContainer);
