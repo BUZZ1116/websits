@@ -1,37 +1,105 @@
-        /* 基本樣式設置 */
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #f4f6f9;
-            color: #333;
-            margin: 0;
-            padding: 0;
-        }
-        h1 {
-            color: blue;
-            font-weight: bold;
-        }
-        .card-img-top {
-            height: 150px; /* Adjust height as needed */
-            object-fit: cover;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-        }
-        /* Hover effect to "float" the image */
-        .card:hover .card-img-top {
-            transform: translateY(-10px); /* Move image up */
-            box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.3); /* Add shadow */
-        }
-        
-        /* Style for the overlay text on top of the image */
-        .overlay {
-            position: absolute;
-            bottom: 5px;
-            right: 5px;
-            background-color: rgba(0, 0, 0, 0.5); /* Dark semi-transparent background */
-            color: white; /* White text */
-            padding: 2px 6px;
-            font-size: 12px;
-            border-radius: 4px;
-        }
-        .card {
-            position: relative; /* Ensures overlay positioning relative to the card */
-        }
+/* 基本樣式設置 */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f6f9;
+    color: #333;
+    margin: 0;
+    padding: 0;
+}
+
+h1 {
+    color: blue;
+    font-weight: bold;
+}
+
+.card-img-top {
+    height: 150px; /* Adjust height as needed */
+    object-fit: cover;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Hover effect to "float" the image */
+.card:hover .card-img-top {
+    transform: translateY(-10px); /* Move image up */
+    box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.3); /* Add shadow */
+}
+
+/* Style for the overlay text on top of the image */
+.overlay {
+    position: absolute;
+    bottom: 8px; /* Slightly adjusted for consistent padding */
+    right: 8px;
+    background-color: rgba(0, 0, 0, 0.6); /* Darker semi-transparent background */
+    color: white; /* White text */
+    padding: 4px 8px;
+    font-size: 12px;
+    border-radius: 4px;
+}
+
+.card {
+    position: relative; /* Ensures overlay positioning relative to the card */
+}
+
+/* Pink bubble background styling */
+@keyframes floatUp {
+    0% {
+        transform: translateY(100vh); /* Start from below the viewport */
+        opacity: 0;
+    }
+    50% {
+        opacity: 0.8;
+    }
+    100% {
+        transform: translateY(-100px); /* Move to above the top of the viewport */
+        opacity: 0;
+    }
+}
+
+.bubble {
+    position: absolute;
+    background-color: rgba(255, 182, 193, 0.5); /* Light pink color */
+    border-radius: 50%;
+    animation: floatUp 10s linear infinite; /* Continuous upward animation */
+    pointer-events: none; /* Prevent interaction */
+}
+
+.bubble:nth-child(1) {
+    width: 100px;
+    height: 100px;
+    left: 10%;
+    animation-duration: 12s;
+    animation-delay: 0s;
+}
+
+.bubble:nth-child(2) {
+    width: 80px;
+    height: 80px;
+    left: 30%;
+    animation-duration: 10s;
+    animation-delay: 2s;
+}
+
+.bubble:nth-child(3) {
+    width: 120px;
+    height: 120px;
+    left: 50%;
+    animation-duration: 14s;
+    animation-delay: 4s;
+}
+
+.bubble:nth-child(4) {
+    width: 90px;
+    height: 90px;
+    left: 70%;
+    animation-duration: 11s;
+    animation-delay: 6s;
+}
+
+.bubble:nth-child(5) {
+    width: 110px;
+    height: 110px;
+    left: 90%;
+    animation-duration: 13s;
+    animation-delay: 8s;
+}
+

@@ -1,8 +1,8 @@
 function createNavBar() {
     const navBar = document.createElement('nav');
     navBar.className = 'navbar navbar-expand-lg sticky-top';
-    navBar.style.background = 'linear-gradient(0deg, #FFD1DC, #FFF0F5)'; // Gradient from bottom (#FFD1DC) to top (#FFF0F5)
-    navBar.style.boxShadow = '0 4px 6px rgba(0, 0, 0, 0.7)'; // Shadow effect
+    navBar.style.background = 'linear-gradient(0deg, #FFD1DC, #FFF0F5)';
+    navBar.style.boxShadow = '0 4px 6px rgba(0, 0, 0, 0.7)';
 
     const containerDiv = document.createElement('div');
     containerDiv.className = 'container-fluid';
@@ -18,10 +18,10 @@ function createNavBar() {
 
     const text1 = document.createElement('div');
     text1.style.fontWeight = 'bold';
-    text1.style.fontSize = '30px'; // Set font size to 26px
-    text1.style.color = 'blue'; // Set font color to blue
-    text1.className = 'floating-text'; // Add a class for the hover effect
-    text1.textContent = '台灣專淫本土妹妹'; // Display text in simplified Chinese
+    text1.style.fontSize = '30px';
+    text1.style.color = 'blue';
+    text1.className = 'floating-text';
+    text1.textContent = '東京風情'; // Example text
 
     textContainer.appendChild(text1);
     brandLink.appendChild(textContainer);
@@ -49,7 +49,7 @@ function createNavBar() {
     const ul = document.createElement('ul');
     ul.className = 'navbar-nav me-auto mb-2 mb-lg-0';
 
-    // Adding "今日出勤表" menu item
+    // Adding "本日出勤表" menu item
     const li1 = document.createElement('li');
     li1.className = 'nav-item';
 
