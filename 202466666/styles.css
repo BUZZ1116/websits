@@ -9,8 +9,25 @@
         .card-img-top {
             height: 150px; /* Adjust height as needed */
             object-fit: cover;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
         }
-        .modal-body img {
-            width: 100%;
-            height: auto;
+        /* Hover effect to "float" the image */
+        .card:hover .card-img-top {
+            transform: translateY(-10px); /* Move image up */
+            box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.3); /* Add shadow */
+        }
+        
+        /* Style for the overlay text on top of the image */
+        .overlay {
+            position: absolute;
+            bottom: 5px;
+            right: 5px;
+            background-color: rgba(0, 0, 0, 0.5); /* Dark semi-transparent background */
+            color: white; /* White text */
+            padding: 2px 6px;
+            font-size: 12px;
+            border-radius: 4px;
+        }
+        .card {
+            position: relative; /* Ensures overlay positioning relative to the card */
         }

@@ -13,12 +13,6 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.min.js"></script>
     <link rel="stylesheet" href="styles.css">
     <title>Document</title>
-    <style>
-        .card-img-top {
-            height: 150px; /* Adjust height as needed */
-            object-fit: cover;
-        }
-    </style>
 </head>
 <body>
     <!--主要內容-->
@@ -28,87 +22,8 @@
         </div>
     </div>
 
-    <!-- Modal for Image A 組織運作 -->
-<div class="modal fade" id="imageModal11" tabindex="-1" aria-labelledby="imageModal11Label" aria-hidden="true">
-    <div class="modal-dialog modal-lg">
-        <div class="modal-content">
-            <div class="modal-header">
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body">
-                <img src="img/1.JPG" class="img-fluid" alt="Image A 組織運作">
-            </div>
-        </div>
-    </div>
-</div>
-
-<!-- Modal for Image B 組織運作 -->
-<div class="modal fade" id="imageModal12" tabindex="-1" aria-labelledby="imageModal12Label" aria-hidden="true">
-    <div class="modal-dialog modal-lg">
-        <div class="modal-content">
-            <div class="modal-header">
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body">
-                <img src="img/2.jpg" class="img-fluid" alt="Image B 組織運作">
-            </div>
-        </div>
-    </div>
-</div>
-
-<!-- Modal for Image C 組織運作 -->
-<div class="modal fade" id="imageModal13" tabindex="-1" aria-labelledby="imageModal13Label" aria-hidden="true">
-    <div class="modal-dialog modal-lg">
-        <div class="modal-content">
-            <div class="modal-header">
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body">
-                <img src="img/3.jpg" class="img-fluid" alt="Image C 組織運作">
-            </div>
-        </div>
-    </div>
-</div>
-
-                           <!-- Modal for Image D 組織運作-->
-           <div class="modal fade" id="imageModal14" tabindex="-1" aria-labelledby="imageModal14Label" aria-hidden="true">
-            <div class="modal-dialog modal-lg">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                    </div>
-                    <div class="modal-body">
-                        <img src="img/4.jpg" class="img-fluid" alt="Image A">
-                    </div>
-                </div>
-            </div>
-        </div>
-                   <!-- Modal for Image E 組織運作-->
-                   <div class="modal fade" id="imageModal15" tabindex="-1" aria-labelledby="imageModal15Label" aria-hidden="true">
-                    <div class="modal-dialog modal-lg">
-                        <div class="modal-content">
-                            <div class="modal-header">
-                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                            </div>
-                            <div class="modal-body">
-                                <img src="img/5.jpg" class="img-fluid" alt="Image A">
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                           <!-- Modal for Image F 組織運作-->
-           <div class="modal fade" id="imageModal16" tabindex="-1" aria-labelledby="imageModal16Label" aria-hidden="true">
-            <div class="modal-dialog modal-lg">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                    </div>
-                    <div class="modal-body">
-                        <img src="img/6.jpg" class="img-fluid" alt="Image A">
-                    </div>
-                </div>
-            </div>
-        </div>
+    <!-- 模態視窗容器 -->
+    <div id="modals-container"></div>
 
     <!-- 引入 navbar.js 文件 -->
     <script src="navbar.js"></script>
@@ -121,45 +36,75 @@
 
         function initializeContent() {
             const pdfImageData1 = [
-                { src: "img/1.JPG", alt: "Image 1", modalId: "imageModal11", type: "img" },
-                { src: "img/2.jpg", alt: "Image 2", modalId: "imageModal12", type: "img" },
-                { src: "img/3.jpg", alt: "Image 3", modalId: "imageModal13", type: "img" },
-                { src: "img/4.jpg", alt: "Image 4", modalId: "imageModal14", type: "img" },
-                { src: "img/5.jpg", alt: "Image 5", modalId: "imageModal15", type: "img" },
-                { src: "img/6.jpg", alt: "Image 6", modalId: "imageModal16", type: "img" }
+                { src: "img/1.JPG", alt: "櫻（Sakura）", modalId: "imageModal11", description: "156/43/C 21岁" },
+                { src: "img/2.jpg", alt: "茉莉（Mori）", modalId: "imageModal12", description: "166/50/F 24岁" },
+                { src: "img/3.jpg", alt: "杏奈（Anna）", modalId: "imageModal13", description: "162/45/D 24岁" },
+                { src: "img/4.jpg", alt: "杏奈（Anna）", modalId: "imageModal14", description: "158/44/D 20岁" },
+                { src: "img/5.jpg", alt: "美優（Miyu）", modalId: "imageModal15", description: "162/55/E 20岁" },
+                { src: "img/6.jpg", alt: "里奈（Rina）", modalId: "imageModal16", description: "160/47/G 21岁" }
             ];
 
             const section1Container = document.querySelector('#section1 .row');
+            const modalsContainer = document.getElementById('modals-container');
+
+            if (!section1Container) {
+                console.error("Container '#section1 .row' not found.");
+                return;
+            }
 
             function createCards(dataArray, container) {
                 dataArray.forEach(item => {
                     const colDiv = document.createElement('div');
-                    colDiv.className = 'col-6 col-md-4 col-lg-2 mb-4'; // 6 columns on large screens, 2 on small screens
+                    colDiv.className = 'col-6 col-md-4 col-lg-2 mb-4';
 
                     const cardDiv = document.createElement('div');
-                    cardDiv.className = 'card h-100';
+                    cardDiv.className = 'card h-100 position-relative';
 
-                    if (item.type === "img") {
-                        const img = document.createElement('img');
-                        img.src = item.src;
-                        img.alt = item.alt;
-                        img.className = 'card-img-top';
-                        img.setAttribute('data-bs-toggle', 'modal');
-                        img.setAttribute('data-bs-target', `#${item.modalId}`);
-                        cardDiv.appendChild(img);
-                    }
+                    const img = document.createElement('img');
+                    img.src = item.src;
+                    img.alt = item.alt;
+                    img.className = 'card-img-top';
+                    img.setAttribute('data-bs-toggle', 'modal');
+                    img.setAttribute('data-bs-target', `#${item.modalId}`);
+                    cardDiv.appendChild(img);
 
-                    const cardBody = document.createElement('div');
-                    cardBody.className = 'card-body';
-                    const cardTitle = document.createElement('h5');
-                    cardTitle.className = 'card-title text-center';
-                    cardTitle.textContent = item.alt;
-                    cardBody.appendChild(cardTitle);
-                    cardDiv.appendChild(cardBody);
+                    // 在圖片右下角顯示 alt 文字
+                    const overlay = document.createElement('div');
+                    overlay.className = 'overlay';
+                    overlay.textContent = item.alt;
+                    cardDiv.appendChild(overlay);
 
                     colDiv.appendChild(cardDiv);
                     container.appendChild(colDiv);
+
+                    // 生成對應的模態視窗
+                    createModal(item);
                 });
+            }
+
+            function createModal(item) {
+                const modalDiv = document.createElement('div');
+                modalDiv.className = 'modal fade';
+                modalDiv.id = item.modalId;
+                modalDiv.setAttribute('tabindex', '-1');
+                modalDiv.setAttribute('aria-labelledby', `${item.modalId}Label`);
+                modalDiv.setAttribute('aria-hidden', 'true');
+
+                modalDiv.innerHTML = `
+                    <div class="modal-dialog modal-lg">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="${item.modalId}Label">${item.alt}</h5>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body text-center">
+                                <img src="${item.src}" class="img-fluid mb-3" alt="${item.alt}">
+                                <p>${item.description}</p>
+                            </div>
+                        </div>
+                    </div>
+                `;
+                modalsContainer.appendChild(modalDiv);
             }
 
             createCards(pdfImageData1, section1Container);
