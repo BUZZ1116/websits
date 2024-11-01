@@ -1,0 +1,16 @@
+        /* 基本樣式設置 */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f6f9;
+            color: #333;
+            margin: 0;
+            padding: 0;
+        }
+        .card-img-top {
+            height: 150px; /* Adjust height as needed */
+            object-fit: cover;
+        }
+        .modal-body img {
+            width: 100%;
+            height: auto;
+        }
