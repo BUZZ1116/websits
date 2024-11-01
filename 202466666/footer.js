@@ -15,8 +15,52 @@ function createFooter() {
     colLeft.className = 'col-md-6 text-start';
     colLeft.style.fontSize = '14.8px';  
     colLeft.innerHTML = `
-    <spen></spen>    
-    <br />
+        <div>
+            <strong>台中配送區域：</strong>
+            <ul>
+                <li>西區、北區、中區、東區、南區、南屯區、西屯區、北屯區、大里區、烏日區、大雅區</li>
+                <li>豐原區、沙鹿區（額外+200車資）</li>
+            </ul>
+        </div>
+        <div>
+            <strong>彰化配送區域：</strong>
+            <ul>
+                <li>彰化市、大村鄉、永靖鄉、田尾鄉、秀水鄉、花壇鄉、埔心鄉、溪湖鄉、和美鄉、員林鄉、田中鄉、鹿港鄉、碑頭鄉</li>
+            </ul>
+        </div>
+        <div>
+            <strong>南投配送區域：</strong>
+            <ul>
+                <li>南投市、草屯鎮</li>
+            </ul>
+        </div>
+        <div>
+            <strong>新竹配送區域：</strong>
+            <ul>
+                <li>新竹市、竹北、香山區、北區、東區</li>
+            </ul>
+        </div>
+        <div>
+            <strong>臺南配送區域：</strong>
+            <ul>
+                <li>東區、北區、南區、中西區（需額外加車資）</li>
+            </ul>
+        </div>
+        <div>
+            <strong>高雄配送區域：</strong>
+            <ul>
+                <li>左營區、苓雅區、三民區、新興區、前金區、前鎮區、鼓山區（+200車費）</li>
+                <li>小港區、鳳山區（需額外加300車費）</li>
+                <li>楠梓區（需額外加400車費）</li>
+            </ul>
+        </div>
+        <div>
+            <strong>新竹配送區域：</strong>
+            <ul>
+                <li>新竹：5K起跳</li>
+                <li>中南部：最低3.5K起，有4K、5K、6K、8K、10K、12K到50K</li>
+            </ul>
+        </div>
     `;
 
     // Right Column

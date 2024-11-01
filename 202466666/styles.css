@@ -6,6 +6,10 @@
             margin: 0;
             padding: 0;
         }
+        h1 {
+            color: blue;
+            font-weight: bold;
+        }
         .card-img-top {
             height: 150px; /* Adjust height as needed */
             object-fit: cover;
