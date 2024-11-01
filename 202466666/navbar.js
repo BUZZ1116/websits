@@ -20,6 +20,7 @@ function createNavBar() {
     text1.style.fontWeight = 'bold';
     text1.style.fontSize = '26px'; // Set font size to 26px
     text1.style.color = 'blue'; // Set font color to blue
+    text1.className = 'floating-text'; // Add a class for the hover effect
     text1.textContent = '东京'; // Display text in simplified Chinese
 
     textContainer.appendChild(text1);
@@ -78,9 +79,17 @@ function createNavBar() {
 
     document.body.prepend(navBar);
 
-    // Add CSS for hover effect with underline expanding from center
+    // Add CSS for hover effect on text1 and underline expanding from center
     const style = document.createElement('style');
     style.innerHTML = `
+        .floating-text {
+            transition: transform 0.3s ease;
+        }
+        
+        .floating-text:hover {
+            transform: translateY(-5px); /* Floating effect */
+        }
+
         .nav-link {
             position: relative;
             text-decoration: none;

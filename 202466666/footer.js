@@ -15,7 +15,8 @@ function createFooter() {
     colLeft.className = 'col-md-6 text-start';
     colLeft.style.fontSize = '14.8px';  
     colLeft.innerHTML = `
-        <br />
+    <spen></spen>    
+    <br />
     `;
 
     // Right Column
