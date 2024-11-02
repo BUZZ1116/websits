@@ -86,7 +86,7 @@
                     colDiv.appendChild(cardDiv);
                     container.appendChild(colDiv);
 
-                    // Generate corresponding modal
+                    // Generate corresponding modal with comment section
                     createModal(item);
                 });
             }
@@ -109,6 +109,18 @@
                             <div class="modal-body text-center">
                                 <img src="${item.src}" class="img-fluid mb-3" alt="${item.alt}">
                                 <p>${item.description}</p>
+                                
+                                <!-- Comment Section -->
+                                <h6>評語：</h6>
+                                <div id="comments-${item.modalId}" class="mb-3"></div>
+
+                                <!-- Comment Form -->
+                                <form onsubmit="addComment(event, '${item.modalId}')">
+                                    <div class="input-group mb-3">
+                                        <input type="text" id="commentInput-${item.modalId}" class="form-control" placeholder="輸入留言">
+                                        <button class="btn btn-primary" type="submit">送出</button>
+                                    </div>
+                                </form>
                             </div>
                         </div>
                     </div>
@@ -117,6 +129,24 @@
             }
 
             createCards(pdfImageData1, section1Container);
+        }
+
+        // Function to add comment to specific modal
+        function addComment(event, modalId) {
+            event.preventDefault();
+            const commentInput = document.getElementById(`commentInput-${modalId}`);
+            const commentsContainer = document.getElementById(`comments-${modalId}`);
+            
+            // Create and append new comment
+            if (commentInput.value.trim() !== "") {
+                const comment = document.createElement('p');
+                comment.textContent = commentInput.value;
+                comment.classList.add('border', 'p-2', 'rounded', 'bg-light', 'mb-2');
+                commentsContainer.appendChild(comment);
+
+                // Clear input field after submitting
+                commentInput.value = '';
+            }
         }
     </script>
 </body>
