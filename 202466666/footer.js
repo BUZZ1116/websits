@@ -24,7 +24,7 @@ function createFooter() {
     colRight.style.fontSize = '14.8px';  
     colRight.innerHTML = `
         <div style="display: inline-flex; gap: 10px; align-items: center;">
-            @riben202400<a href="mailto:pijh06@hc.edu.tw" class="footer-link">
+            @riben202400<a href="" class="footer-link">
                 <img src="icon/telegram.png" alt="telegram Icon" style="width: 24px; height: auto;">
             </a>
             202466666<a href="#" class="footer-link">
