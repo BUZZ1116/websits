@@ -1,10 +1,10 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zh-Hant">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="安寶提供台中、新竹、彰化、南投、高雄等區域的專業服務，聯繫方式加賴id：f8629。服務區域涵蓋北中南地區，品質保證，立即聯繫。">
-    <meta name="keywords" content="本土妹妹, 安寶, 台中, 新竹, 彰化, 南投, 高雄, 專業服務, 高品質, 賴f8629">
+    <meta name="description" content="探索東京風俗體驗的詳細介紹，包括服務選項與日本夜生活資訊。">
+    <meta name="keywords" content="東京風俗, 日本夜生活, 東京夜遊, 風俗店介紹, 日本夜店">
     <meta name="author" content="LO WEI JHIH">
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -12,7 +12,21 @@
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.min.js"></script>
     <link rel="stylesheet" href="styles.css">
-    <title>東京風俗買春</title>
+    <title>東京風俗體驗 | 日本夜生活資源</title>
+
+    <!-- Structured Data for SEO -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebPage",
+      "name": "東京風俗體驗",
+      "description": "探索東京風俗體驗的詳細介紹，包括服務選項與夜生活指南。",
+      "author": {
+        "@type": "Person",
+        "name": "LO WEI JHIH"
+      }
+    }
+    </script>
 </head>
 <body>
     <!-- Background bubbles -->
@@ -24,7 +38,8 @@
     
     <!-- Main Content -->
     <div class="container mt-5" id="section1">
-        <h1>東京風俗買春</h1>
+        <h1>東京風俗體驗</h1>
+        <h2>推薦服務</h2>
         <div class="row">
             <!-- Dynamic cards will be inserted here -->
         </div>
@@ -44,18 +59,18 @@
 
         function initializeContent() {
             const pdfImageData1 = [
-                { src: "img/1.jpg", alt: "櫻（Sakura）", modalId: "imageModal11", description: "156/43/C cup 21岁" },
-                { src: "img/2.jpg", alt: "茉莉（Mori）", modalId: "imageModal12", description: "166/50/F cup 24岁" },
-                { src: "img/3.jpg", alt: "杏奈（Anna）", modalId: "imageModal13", description: "162/45/D cup 24岁" },
-                { src: "img/4.jpg", alt: "杏奈（Anna）", modalId: "imageModal14", description: "158/44/D cup 20岁" },
-                { src: "img/5.jpg", alt: "美優（Miyu）", modalId: "imageModal15", description: "162/55/E cup 20岁" },
-                { src: "img/6.jpg", alt: "里奈（Rina）", modalId: "imageModal16", description: "160/47/G cup 21岁" },
-                { src: "img/7.jpg", alt: "櫻（Sakura）", modalId: "imageModal17", description: "165/44/C cup 25岁" },
-                { src: "img/8.jpg", alt: "杏（Kyoko）", modalId: "imageModal18", description: "162/45/B cup 22岁" },
-                { src: "img/9.jpg", alt: "亞美（Ami）", modalId: "imageModal19", description: "164/48/D+cup 25岁" },
-                { src: "img/10.jpg", alt: "千尋（Chihiro）", modalId: "imageModal110", description: "156/47/E cup 25岁" },
-                { src: "img/11.jpg", alt: "詩織（Shiori）", modalId: "imageModal111", description: "165/50/G cup 26岁" },
-                { src: "img/12.jpg", alt: "未來（Mirai）", modalId: "imageModal112", description: "158/44/A cup 19岁" },
+                { src: "img/1.jpg", alt: "櫻（Sakura）", modalId: "imageModal11", description: "156/43/C cup 21歲" },
+                { src: "img/2.jpg", alt: "茉莉（Mori）", modalId: "imageModal12", description: "166/50/F cup 24歲" },
+                { src: "img/3.jpg", alt: "杏奈（Anna）", modalId: "imageModal13", description: "162/45/D cup 24歲" },
+                { src: "img/4.jpg", alt: "杏奈（Anna）", modalId: "imageModal14", description: "158/44/D cup 20歲" },
+                { src: "img/5.jpg", alt: "美優（Miyu）", modalId: "imageModal15", description: "162/55/E cup 20歲" },
+                { src: "img/6.jpg", alt: "里奈（Rina）", modalId: "imageModal16", description: "160/47/G cup 21歲" },
+                { src: "img/7.jpg", alt: "櫻（Sakura）", modalId: "imageModal17", description: "165/44/C cup 25歲" },
+                { src: "img/8.jpg", alt: "杏（Kyoko）", modalId: "imageModal18", description: "162/45/B cup 22歲" },
+                { src: "img/9.jpg", alt: "亞美（Ami）", modalId: "imageModal19", description: "164/48/D+cup 25歲" },
+                { src: "img/10.jpg", alt: "千尋（Chihiro）", modalId: "imageModal110", description: "156/47/E cup 25歲" },
+                { src: "img/11.jpg", alt: "詩織（Shiori）", modalId: "imageModal111", description: "165/50/G cup 26歲" },
+                { src: "img/12.jpg", alt: "未來（Mirai）", modalId: "imageModal112", description: "158/44/A cup 19歲" },
             ];
 
             const section1Container = document.querySelector('#section1 .row');
@@ -73,6 +88,7 @@
                     img.src = item.src;
                     img.alt = item.alt;
                     img.className = 'card-img-top';
+                    img.loading = 'lazy'; // Lazy loading for better SEO
                     img.setAttribute('data-bs-toggle', 'modal');
                     img.setAttribute('data-bs-target', `#${item.modalId}`);
                     cardDiv.appendChild(img);
