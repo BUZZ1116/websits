@@ -3,18 +3,17 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="探索東京風俗體驗的詳細介紹，包括服務選項與日本夜生活資訊。">
-    <meta name="keywords" content="東京風俗, 日本夜生活, 東京夜遊, 風俗店介紹, 日本夜店">
+    <meta name="description" content="探索東京風俗體驗的詳細介紹，包括服務選項與日本夜生活資訊，幫助您了解東京夜遊的各種服務與指導。">
+    <meta name="keywords" content="東京風俗, 日本夜生活, 東京夜遊, 風俗店介紹, 日本夜店, 東京夜生活指導">
     <meta name="author" content="LO WEI JHIH">
+    <title>東京風俗體驗 | 日本夜生活資源與指導</title>
+    
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    <!-- Bootstrap JS and Popper.js -->
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.min.js"></script>
+    <!-- Custom CSS -->
     <link rel="stylesheet" href="styles.css">
-    <title>東京風俗體驗 | 日本夜生活資源</title>
 
-    <!-- Structured Data for SEO -->
+    <!-- SEO Structured Data -->
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
@@ -29,26 +28,30 @@
     </script>
 </head>
 <body>
-    <!-- Background bubbles -->
-    <div class="bubble"></div>
-    <div class="bubble"></div>
-    <div class="bubble"></div>
-    <div class="bubble"></div>
-    <div class="bubble"></div>
+    <!-- Background Effect -->
+    <div class="background-bubbles">
+        <div class="bubble"></div>
+        <div class="bubble"></div>
+        <div class="bubble"></div>
+        <div class="bubble"></div>
+        <div class="bubble"></div>
+    </div>
     
-    <!-- Main Content -->
+    <!-- Main Content Section -->
     <div class="container mt-5" id="section1">
-        <h1>東京風俗體驗</h1>
-        <h2>推薦服務</h2>
-        <div class="row">
+        <h1 class="text-center mb-4">東京風俗體驗與推薦服務</h1>
+        <h2 class="text-center text-muted">發現東京夜生活的魅力</h2>
+        <div class="row mt-4">
             <!-- Dynamic cards will be inserted here -->
         </div>
     </div>
 
-    <!-- Modal container -->
+    <!-- Modal container for dynamic modals -->
     <div id="modals-container"></div>
 
     <!-- External Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.min.js"></script>
     <script src="navbar.js"></script>
     <script src="footer.js"></script>
     
@@ -79,30 +82,28 @@
             function createCards(dataArray, container) {
                 dataArray.forEach(item => {
                     const colDiv = document.createElement('div');
-                    colDiv.className = 'col-6 col-md-4 col-lg-2 mb-4';
+                    colDiv.className = 'col-6 col-md-4 col-lg-3 mb-4';
 
                     const cardDiv = document.createElement('div');
-                    cardDiv.className = 'card h-100 position-relative';
+                    cardDiv.className = 'card h-100 position-relative shadow';
 
                     const img = document.createElement('img');
                     img.src = item.src;
                     img.alt = item.alt;
-                    img.className = 'card-img-top';
-                    img.loading = 'lazy'; // Lazy loading for better SEO
+                    img.className = 'card-img-top rounded';
+                    img.loading = 'lazy';
                     img.setAttribute('data-bs-toggle', 'modal');
                     img.setAttribute('data-bs-target', `#${item.modalId}`);
                     cardDiv.appendChild(img);
 
-                    // Overlay with alt text
                     const overlay = document.createElement('div');
-                    overlay.className = 'overlay';
+                    overlay.className = 'overlay text-white p-2';
                     overlay.textContent = item.alt;
                     cardDiv.appendChild(overlay);
 
                     colDiv.appendChild(cardDiv);
                     container.appendChild(colDiv);
 
-                    // Generate corresponding modal with comment section
                     createModal(item);
                 });
             }
@@ -123,7 +124,7 @@
                                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                             </div>
                             <div class="modal-body text-center">
-                                <img src="${item.src}" class="img-fluid mb-3" alt="${item.alt}">
+                                <img src="${item.src}" class="img-fluid mb-3 rounded" alt="${item.alt}">
                                 <p>${item.description}</p>
                                 
                                 <!-- Comment Section -->
@@ -147,20 +148,17 @@
             createCards(pdfImageData1, section1Container);
         }
 
-        // Function to add comment to specific modal
         function addComment(event, modalId) {
             event.preventDefault();
             const commentInput = document.getElementById(`commentInput-${modalId}`);
             const commentsContainer = document.getElementById(`comments-${modalId}`);
             
-            // Create and append new comment
             if (commentInput.value.trim() !== "") {
                 const comment = document.createElement('p');
                 comment.textContent = commentInput.value;
                 comment.classList.add('border', 'p-2', 'rounded', 'bg-light', 'mb-2');
                 commentsContainer.appendChild(comment);
 
-                // Clear input field after submitting
                 commentInput.value = '';
             }
         }
