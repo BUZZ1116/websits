@@ -30,7 +30,7 @@ document.addEventListener("DOMContentLoaded", function() {
                     <div class="col-md-6 text-end">
                         <div class="d-flex flex-column align-items-end">
                             <!-- 社交圖標區塊 -->
-                            <div class="social-icons mb-3" style="display: flex; gap: 20px; align-items: center;">
+                            <div class="social-icons" style="display: flex; gap: 20px; align-items: center; margin-bottom: 15px;">
                                 <a href="https://t.me/f8629/3786" target="_blank" style="text-decoration: none; color: #fff;">
                                     <img src="icon/telegram.png" alt="Telegram" width="30" height="30" style="vertical-align: middle;">
                                     <span style="margin-left: 5px;">Telegram</span>
@@ -45,7 +45,7 @@ document.addEventListener("DOMContentLoaded", function() {
                                 </a>
                             </div>
                             <!-- 額外資訊區塊，位於社交圖標下方 -->
-                            <div style="font-size: 12px; color: #aaa; text-align: right;">
+                            <div style="font-size: 12px; color: #aaa; text-align: right; margin-top: 10px;">
                                 <span class="footer-text">建議最佳瀏覽環境: Chrome 62 以上版本、Firefox 56 以上版本、Microsoft Edge</span><br>
                                 <span class="footer-text">Design by LO WEI JHIH</span>
                             </div>
