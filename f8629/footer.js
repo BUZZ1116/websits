@@ -30,24 +30,27 @@ document.addEventListener("DOMContentLoaded", function() {
                     <div class="col-md-6 text-end">
                         <div class="d-flex flex-column align-items-end">
                             <!-- 社交圖標區塊 -->
-                            <div class="social-icons" style="display: flex; gap: 20px; align-items: center; margin-bottom: 15px;">
-                                <a href="https://t.me/f8629/3786" target="_blank" style="text-decoration: none; color: #fff;">
-                                    <img src="icon/telegram.png" alt="Telegram" width="30" height="30" style="vertical-align: middle;">
-                                    <span style="margin-left: 5px;">Telegram</span>
-                                </a>
-                                <a href="https://www.facebook.com/groups/959771152424443" target="_blank" style="text-decoration: none; color: #fff;">
-                                    <img src="icon/facebook.png" alt="Facebook" width="30" height="30" style="vertical-align: middle;">
-                                    <span style="margin-left: 5px;">Facebook</span>
-                                </a>
-                                <a href="https://line.me/ti/p/f8629" target="_blank" style="text-decoration: none; color: #fff;">
-                                    <img src="icon/line.png" alt="LINE" width="30" height="30" style="vertical-align: middle;">
-                                    <span style="margin-left: 5px;">LINE</span>
-                                </a>
-                            </div>
-                            <!-- 額外資訊區塊，位於社交圖標下方 -->
-                            <div style="font-size: 12px; color: #aaa; text-align: right; margin-top: 10px;">
-                                <span class="footer-text">建議最佳瀏覽環境: Chrome 62 以上版本、Firefox 56 以上版本、Microsoft Edge</span><br>
+                            <div class="social-icons" style="display: flex; flex-direction: column; align-items: end; gap: 10px; margin-bottom: 15px;">
+                                <div style="display: flex; gap: 20px; align-items: center;">
+                                    <a href="https://t.me/f8629/3786" target="_blank" style="text-decoration: none; color: #fff;">
+                                        <img src="icon/telegram.png" alt="Telegram" width="30" height="30" style="vertical-align: middle;">
+                                        <span style="margin-left: 5px;">Telegram</span>
+                                    </a>
+                                    <a href="https://www.facebook.com/groups/959771152424443" target="_blank" style="text-decoration: none; color: #fff;">
+                                        <img src="icon/facebook.png" alt="Facebook" width="30" height="30" style="vertical-align: middle;">
+                                        <span style="margin-left: 5px;">Facebook</span>
+                                    </a>
+                                    <a href="https://line.me/ti/p/f8629" target="_blank" style="text-decoration: none; color: #fff;">
+                                        <img src="icon/line.png" alt="LINE" width="30" height="30" style="vertical-align: middle;">
+                                        <span style="margin-left: 5px;">LINE</span>
+                                    </a>
+                                </div>
+                                <!-- 建議瀏覽環境 -->
+                                <div style="font-size: 14px; color: #aaa; text-align: right; margin-top: 5px;">
+                                    <span class="footer-text">建議最佳瀏覽環境: Chrome 62 以上版本、Firefox 56 以上版本、Microsoft Edge</span>
+                                    <br />
                                 <span class="footer-text">Design by LO WEI JHIH</span>
+                                    </div>
                             </div>
                         </div>
                     </div>
