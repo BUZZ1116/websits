@@ -33,15 +33,15 @@ document.addEventListener("DOMContentLoaded", function() {
                             <div class="social-icons" style="display: flex; flex-direction: column; align-items: end; gap: 10px; margin-bottom: 15px;">
                                 <div style="display: flex; gap: 20px; align-items: center;">
                                     <a href="https://t.me/f8629/3786" target="_blank" style="text-decoration: none; color: #fff;">
-                                        <img src="icon/telegram.png" alt="Telegram" width="30" height="30" style="vertical-align: middle;">
+                                        <img src="icon/telegram.png" alt="Telegram" width="28" height="30" style="vertical-align: middle;">
                                         <span style="margin-left: 5px;">Telegram</span>
                                     </a>
                                     <a href="https://www.facebook.com/groups/959771152424443" target="_blank" style="text-decoration: none; color: #fff;">
-                                        <img src="icon/facebook.png" alt="Facebook" width="30" height="30" style="vertical-align: middle;">
+                                        <img src="icon/facebook.png" alt="Facebook" width="28" height="30" style="vertical-align: middle;">
                                         <span style="margin-left: 5px;">Facebook</span>
                                     </a>
                                     <a href="https://line.me/ti/p/f8629" target="_blank" style="text-decoration: none; color: #fff;">
-                                        <img src="icon/line.png" alt="LINE" width="30" height="30" style="vertical-align: middle;">
+                                        <img src="icon/line.png" alt="LINE" width="28" height="30" style="vertical-align: middle;">
                                         <span style="margin-left: 5px;">LINE</span>
                                     </a>
                                 </div>
