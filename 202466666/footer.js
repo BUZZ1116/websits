@@ -13,23 +13,29 @@ function createFooter() {
     // Left Column
     const colLeft = document.createElement('div');
     colLeft.className = 'col-md-6 text-start';
-    colLeft.style.fontSize = '14.8px';  
+    colLeft.style.fontSize = '14.8px';
     colLeft.innerHTML = `
-   日本东京 面向外国人的成人娱乐 住家→外送酒店→ 本番 现金消费→明买明卖→ 诚信交易→ 百分百照片本人 →私訊唯一客服 下午13：00 到晚上24:00
+       日本东京 面向外国人的成人娱乐 住家→外送酒店→ 本番 现金消费→明买明卖→ 诚信交易→ 百分百照片本人 →私訊唯一客服 下午13：00 到晚上24:00
     `;
 
     // Right Column
     const colRight = document.createElement('div');
     colRight.className = 'col-md-6 text-end';
-    colRight.style.fontSize = '14.8px';  
+    colRight.style.fontSize = '14.8px';
     colRight.innerHTML = `
-        <div style="display: inline-flex; gap: 10px; align-items: center;">
-            @riben202400<a href="" class="footer-link">
-                <img src="icon/telegram.png" alt="telegram Icon" style="width: 24px; height: auto;">
-            </a>
-            202466666<a href="#" class="footer-link">
-                <img src="icon/line.png" alt="Line Icon" style="width: 24px; height: auto;">
-            </a>
+        <div style="display: inline-flex; gap: 15px; align-items: center;">
+            <span style="display: flex; align-items: center;">
+                 
+                <a href="https://t.me/riben202400" target="_blank" class="footer-link">
+                    <img src="icon/telegram.png" alt="Telegram Icon" style="width: 24px; height: auto; margin-left: 5px;">@riben202400
+                </a>
+            </span>
+            <span style="display: flex; align-items: center;">
+                
+                <a href="https://line.me/ti/p/202466666" target="_blank" class="footer-link">
+                    <img src="icon/line.png" alt="LINE Icon" style="width: 24px; height: auto; margin-left: 5px;">202466666
+                </a>
+            </span>
         </div>
         <br />
         <span class="footer-text">建議最佳瀏覽環境: Chrome 62 以上版本、Firefox 56 以上版本、Microsoft Edge</span><br>
