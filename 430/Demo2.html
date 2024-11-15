@@ -67,6 +67,11 @@ p {
     text-decoration: underline;
 }
 
+#content {
+    text-align: center;
+    overflow: hidden; /* 限制圖片放大後的範圍 */
+}
+
 #content h2 {
     text-align: center; 
     color: white;
@@ -79,9 +84,10 @@ p {
     width: 300px;
     box-shadow: 5px 5px 5px black;
     transition: transform 0.3s ease; /* 平滑過渡效果 */
+    transform-origin: center center; /* 設置放大效果的中心 */
 }
 
-#content img:hover {
+#content:hover img {
     transform: scale(1.1); /* 懸停時放大 1.1 倍 */
 }
 </style>
