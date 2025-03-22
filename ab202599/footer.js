@@ -30,7 +30,7 @@ function createFooter() {
     colRight.style.fontSize = '14.8px';  
     colRight.innerHTML = `
         <div style="display: inline-flex; gap: 10px; align-items: center;">
-            ab202599<a href="http://t.me/ab20258888" class="footer-link">
+            @ab202588888<a href="http://t.me/ab20258888" class="footer-link">
                 <img src="icon/telegram.png" alt="Line Icon" style="width: 24px; height: auto;">
             </a>
             <a href="#" class="footer-link">
