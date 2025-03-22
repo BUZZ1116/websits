@@ -21,7 +21,7 @@ function createNavBar() {
     const text1 = document.createElement('div');
     text1.style.fontWeight = 'bold';
     text1.style.fontSize = '18px';
-    text1.textContent = '安寶全台外送';
+    text1.textContent = '@ab202599 安寶全台外送';
 
     const text2 = document.createElement('div');
 
