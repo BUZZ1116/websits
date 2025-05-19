@@ -89,9 +89,9 @@
 
       const formData = {
         data: {
-          name: name,
-          message: message,
-          time: time
+          Name: name,
+          Message: message,
+          Time: time
         }
       };
 
@@ -125,7 +125,7 @@
           data.reverse().forEach(row => {
             const div = document.createElement('div');
             div.className = 'comment';
-            div.innerHTML = `<strong>${row.name}</strong>：${row.message}<br><small>${row.time}</small>`;
+            div.innerHTML = `<strong>${row.Name}</strong>：${row.Message}<br><small>${row.Time}</small>`;
             list.appendChild(div);
           });
         })
