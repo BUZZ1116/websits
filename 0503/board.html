@@ -11,12 +11,10 @@
       max-width: 600px;
       margin: auto;
     }
-
     h2 {
       text-align: center;
       color: #0072E3;
     }
-
     form {
       margin-bottom: 20px;
       background: #ffffff;
@@ -24,9 +22,7 @@
       border-radius: 8px;
       box-shadow: 0 0 10px rgba(0,0,0,0.1);
     }
-
-    input[type="text"],
-    textarea {
+    input[type="text"], textarea {
       width: 100%;
       padding: 10px;
       margin: 8px 0;
@@ -34,7 +30,6 @@
       border-radius: 5px;
       font-size: 16px;
     }
-
     button {
       background-color: #0072E3;
       color: white;
@@ -44,28 +39,23 @@
       cursor: pointer;
       font-size: 16px;
     }
-
     button:hover {
       background-color: #005bb5;
     }
-
     #comments {
       background: #ffffff;
       padding: 15px;
       border-radius: 8px;
       box-shadow: 0 0 10px rgba(0,0,0,0.05);
     }
-
     .comment {
       margin-bottom: 15px;
       border-bottom: 1px solid #eee;
       padding-bottom: 10px;
     }
-
     .comment strong {
       color: #333;
     }
-
     .comment small {
       color: #888;
     }
@@ -77,57 +67,71 @@
 
   <form id="commentForm">
     <label for="name">您的名字：</label>
-    <input type="text" id="name" required placeholder="請輸入姓名">
+    <input type="text" id="name" name="name" required placeholder="請輸入姓名">
     <label for="message">留言內容：</label>
-    <textarea id="message" rows="4" required placeholder="請輸入留言"></textarea>
+    <textarea id="message" name="message" rows="4" required placeholder="請輸入留言"></textarea>
     <button type="submit">送出留言</button>
   </form>
 
   <div id="comments">
     <h3>留言紀錄</h3>
-    <div id="commentsList"></div>
+    <div id="commentsList">載入中...</div>
   </div>
 
   <script>
-    const scriptURL = 'https://script.google.com/macros/s/AKfycbx9bpvCwuZ6G3onHmcJ75dsW8a2cfQ6ajv0oStzlUdoo8O2EvufMpAHatat0AiVctl2jg/exec';
+    const sheetdbURL = 'https://sheetdb.io/api/v1/87iryeaewjtwv';
 
     document.getElementById('commentForm').addEventListener('submit', function (e) {
       e.preventDefault();
       const name = document.getElementById('name').value.trim();
       const message = document.getElementById('message').value.trim();
+      const time = new Date().toLocaleString('zh-TW');
 
-      const formData = new URLSearchParams();
-      formData.append("name", name);
-      formData.append("message", message);
+      const formData = {
+        data: {
+          name: name,
+          message: message,
+          time: time
+        }
+      };
 
-      fetch(scriptURL, {
+      fetch(sheetdbURL, {
         method: 'POST',
-        body: formData
+        body: JSON.stringify(formData),
+        headers: { 'Content-Type': 'application/json' }
       })
-      .then(res => res.text())
-      .then(result => {
-        alert("留言已送出！");
+      .then(response => response.json())
+      .then(() => {
+        alert('留言已送出！');
         document.getElementById('commentForm').reset();
         loadComments();
       })
-      .catch(err => {
-        alert("留言送出失敗！");
-        console.error("Error:", err);
+      .catch(error => {
+        alert('留言失敗，請稍後再試。');
+        console.error('Error:', error);
       });
     });
 
     function loadComments() {
-      fetch(scriptURL)
-        .then(res => res.json())
+      fetch(sheetdbURL)
+        .then(response => response.json())
         .then(data => {
           const list = document.getElementById('commentsList');
           list.innerHTML = '';
-          data.reverse().forEach(comment => {
+          if (!Array.isArray(data)) {
+            list.textContent = '留言資料格式錯誤';
+            return;
+          }
+          data.reverse().forEach(row => {
             const div = document.createElement('div');
             div.className = 'comment';
-            div.innerHTML = `<strong>${comment.name}</strong>：${comment.message}<br><small>${comment.time}</small>`;
+            div.innerHTML = `<strong>${row.name}</strong>：${row.message}<br><small>${row.time}</small>`;
             list.appendChild(div);
           });
+        })
+        .catch(error => {
+          document.getElementById('commentsList').textContent = '留言讀取失敗';
+          console.error('留言讀取失敗：', error);
         });
     }
 
