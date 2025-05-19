@@ -122,7 +122,8 @@
             list.textContent = '留言資料格式錯誤';
             return;
           }
-          data.reverse().forEach(row => {
+
+          data.reverse().slice(0, 3).forEach(row => {
             const div = document.createElement('div');
             div.className = 'comment';
             div.innerHTML = `<strong>${row.Name}</strong>：${row.Message}<br><small>${row.Time}</small>`;
