@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8">
+  <title>留言板</title>
+  <style>
+    body {
+      font-family: "Noto Sans TC", sans-serif;
+      background-color: #f7f9fb;
+      padding: 30px;
+      max-width: 600px;
+      margin: auto;
+    }
+
+    h2 {
+      text-align: center;
+      color: #0072E3;
+    }
+
+    form {
+      margin-bottom: 20px;
+      background: #ffffff;
+      padding: 15px;
+      border-radius: 8px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+
+    input[type="text"],
+    textarea {
+      width: 100%;
+      padding: 10px;
+      margin: 8px 0;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      font-size: 16px;
+    }
+
+    button {
+      background-color: #0072E3;
+      color: white;
+      padding: 10px 16px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 16px;
+    }
+
+    button:hover {
+      background-color: #005bb5;
+    }
+
+    #comments {
+      background: #ffffff;
+      padding: 15px;
+      border-radius: 8px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.05);
+    }
+
+    .comment {
+      margin-bottom: 15px;
+      border-bottom: 1px solid #eee;
+      padding-bottom: 10px;
+    }
+
+    .comment strong {
+      color: #333;
+    }
+
+    .comment small {
+      color: #888;
+    }
+  </style>
+</head>
+<body>
+
+  <h2>留言板</h2>
+
+  <form id="commentForm">
+    <label>您的名字：</label>
+    <input type="text" id="name" required placeholder="請輸入姓名">
+    <label>留言內容：</label>
+    <textarea id="message" rows="4" required placeholder="請輸入留言"></textarea>
+    <button type="submit">送出留言</button>
+  </form>
+
+  <div id="comments">
+    <h3>留言紀錄</h3>
+    <div id="commentsList"></div>
+  </div>
+
+  <script>
+    const scriptURL = 'https://script.google.com/macros/s/AKfycbXXXXX/exec'; // ⬅ 替換成你的 Apps Script URL
+
+    document.getElementById('commentForm').addEventListener('submit', function (e) {
+      e.preventDefault();
+      const name = document.getElementById('name').value.trim();
+      const message = document.getElementById('message').value.trim();
+
+      if (name && message) {
+        fetch(scriptURL, {
+          method: 'POST',
+          body: JSON.stringify({ name, message }),
+          headers: { 'Content-Type': 'application/json' }
+        })
+        .then(response => {
+          alert("留言已送出！");
+          document.getElementById('commentForm').reset();
+          loadComments();
+        })
+        .catch(error => {
+          alert("留言失敗，請稍後再試。");
+          console.error('Error!', error.message);
+        });
+      }
+    });
+
+    function loadComments() {
+      fetch(scriptURL)
+        .then(response => response.json())
+        .then(data => {
+          const list = document.getElementById('commentsList');
+          list.innerHTML = '';
+          data.reverse().forEach(comment => {
+            const div = document.createElement('div');
+            div.className = 'comment';
+            div.innerHTML = `<strong>${comment.name}</strong>：${comment.message}<br><small>${comment.time}</small>`;
+            list.appendChild(div);
+          });
+        });
+    }
+
+    loadComments(); // 頁面載入時先顯示留言
+  </script>
+
+</body>
+</html>
