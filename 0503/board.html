@@ -1,142 +1,97 @@
 <!DOCTYPE html>
 <html lang="zh-Hant">
 <head>
-  <meta charset="UTF-8">
-  <title>留言板</title>
-  <style>
-    body {
-      font-family: "Noto Sans TC", sans-serif;
-      background-color: #f7f9fb;
-      padding: 30px;
-      max-width: 600px;
-      margin: auto;
-    }
-    h2 {
-      text-align: center;
-      color: #0072E3;
-    }
-    form {
-      margin-bottom: 20px;
-      background: #ffffff;
-      padding: 15px;
-      border-radius: 8px;
-      box-shadow: 0 0 10px rgba(0,0,0,0.1);
-    }
-    input[type="text"], textarea {
-      width: 100%;
-      padding: 10px;
-      margin: 8px 0;
-      border: 1px solid #ccc;
-      border-radius: 5px;
-      font-size: 16px;
-    }
-    button {
-      background-color: #0072E3;
-      color: white;
-      padding: 10px 16px;
-      border: none;
-      border-radius: 5px;
-      cursor: pointer;
-      font-size: 16px;
-    }
-    button:hover {
-      background-color: #005bb5;
-    }
-    #comments {
-      background: #ffffff;
-      padding: 15px;
-      border-radius: 8px;
-      box-shadow: 0 0 10px rgba(0,0,0,0.05);
-    }
-    .comment {
-      margin-bottom: 15px;
-      border-bottom: 1px solid #eee;
-      padding-bottom: 10px;
-    }
-    .comment strong {
-      color: #333;
-    }
-    .comment small {
-      color: #888;
-    }
-  </style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>113學年度學習中心職業試探保險名單</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
 </head>
-<body>
+<body class="bg-light">
 
-  <h2>留言板</h2>
+  <div class="container py-5">
+    <h2 class="text-center text-primary mb-4">113學年度學習中心職業試探保險名單</h2>
 
-  <form id="commentForm">
-    <label for="name">您的名字：</label>
-    <input type="text" id="name" name="name" required placeholder="請輸入姓名">
-    <label for="message">留言內容：</label>
-    <textarea id="message" name="message" rows="4" required placeholder="請輸入留言"></textarea>
-    <button type="submit">送出留言</button>
-  </form>
+    <!-- 查詢輸入框 -->
+    <div class="mb-4">
+      <input type="text" id="searchInput" class="form-control" placeholder="輸入關鍵字查詢（例如班級、姓名、助理員）">
+    </div>
 
-  <div id="comments">
-    <h3>留言紀錄(顯示最新3筆)</h3>
-    <div id="commentsList">載入中...</div>
+    <div class="table-responsive">
+      <table class="table table-bordered table-hover align-middle bg-white shadow-sm" id="dataTable">
+        <thead class="table-primary text-center">
+          <tr>
+            <th>編號</th>
+            <th>班級</th>
+            <th>座號</th>
+            <th>姓名</th>
+            <th>學生出生年月日</th>
+            <th>學生身分證字號</th>
+            <th>聯絡人</th>
+            <th>聯絡人電話</th>
+            <th>助理員</th>
+          </tr>
+        </thead>
+        <tbody class="text-center">
+          <tr><td colspan="9">資料載入中...</td></tr>
+        </tbody>
+      </table>
+    </div>
   </div>
 
   <script>
-    const sheetdbURL = 'https://sheetdb.io/api/v1/87iryeaewjtwv';
+    const sheetdbURL = 'https://sheetdb.io/api/v1/j23t7jr977ixj';
+    let allData = [];
 
-    document.getElementById('commentForm').addEventListener('submit', function (e) {
-      e.preventDefault();
-      const name = document.getElementById('name').value.trim();
-      const message = document.getElementById('message').value.trim();
-      const time = new Date().toLocaleString('zh-TW');
-
-      const formData = {
-        data: {
-          Name: name,
-          Message: message,
-          Time: time
-        }
-      };
-
-      fetch(sheetdbURL, {
-        method: 'POST',
-        body: JSON.stringify(formData),
-        headers: { 'Content-Type': 'application/json' }
-      })
+    // 資料載入
+    fetch(sheetdbURL)
       .then(response => response.json())
-      .then(() => {
-        alert('留言已送出！');
-        document.getElementById('commentForm').reset();
-        loadComments();
+      .then(data => {
+        allData = data;
+        renderTable(data);
       })
       .catch(error => {
-        alert('留言失敗，請稍後再試。');
-        console.error('Error:', error);
+        const tbody = document.querySelector("#dataTable tbody");
+        tbody.innerHTML = `<tr><td colspan='9'>資料讀取失敗</td></tr>`;
+        console.error("載入失敗：", error);
       });
-    });
 
-    function loadComments() {
-      fetch(sheetdbURL)
-        .then(response => response.json())
-        .then(data => {
-          const list = document.getElementById('commentsList');
-          list.innerHTML = '';
-          if (!Array.isArray(data)) {
-            list.textContent = '留言資料格式錯誤';
-            return;
-          }
+    // 顯示表格資料
+    function renderTable(data) {
+      const tbody = document.querySelector("#dataTable tbody");
+      tbody.innerHTML = "";
 
-          data.reverse().slice(0, 3).forEach(row => {
-            const div = document.createElement('div');
-            div.className = 'comment';
-            div.innerHTML = `<strong>${row.Name}</strong>：${row.Message}<br><small>${row.Time}</small>`;
-            list.appendChild(div);
-          });
-        })
-        .catch(error => {
-          document.getElementById('commentsList').textContent = '留言讀取失敗';
-          console.error('留言讀取失敗：', error);
-        });
+      if (!data.length) {
+        tbody.innerHTML = "<tr><td colspan='9'>查無資料</td></tr>";
+        return;
+      }
+
+      data.forEach(row => {
+        const tr = document.createElement("tr");
+        tr.innerHTML = `
+          <td>${row.編號 || ''}</td>
+          <td>${row.班級 || ''}</td>
+          <td>${row.座號 || ''}</td>
+          <td>${row.姓名 || ''}</td>
+          <td>${row.學生出生年月日 || ''}</td>
+          <td>${row.學生身分證字號 || ''}</td>
+          <td>${row.聯絡人 || ''}</td>
+          <td>${row.聯絡人電話 || ''}</td>
+          <td>${row.助理員 || ''}</td>
+        `;
+        tbody.appendChild(tr);
+      });
     }
 
-    loadComments();
+    // 查詢功能
+    document.getElementById('searchInput').addEventListener('input', function () {
+      const keyword = this.value.trim().toLowerCase();
+      const filtered = allData.filter(row =>
+        Object.values(row).some(
+          value => value && value.toLowerCase().includes(keyword)
+        )
+      );
+      renderTable(filtered);
+    });
   </script>
 
 </body>
