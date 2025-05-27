@@ -62,6 +62,13 @@
       </tbody>
     </table>
   </div>
+
+  <!-- 統計摘要區 -->
+  <div id="summary" class="mt-4 bg-white rounded p-4 shadow-sm border border-primary">
+    <h5 class="text-primary mb-3">📊 統計摘要</h5>
+    <div id="activitySummary" class="mb-2"></div>
+    <div id="totalFeeSummary" class="fw-bold text-success"></div>
+  </div>
 </div>
 
 <script>
@@ -76,6 +83,7 @@
       detectActivityColumns(data[0]);
       updateMissingFees(data);
       renderTable(data);
+      updateSummary(data);
     })
     .catch(err => {
       document.getElementById("tableBody").innerHTML = `<tr><td colspan='11'>資料讀取失敗</td></tr>`;
@@ -87,7 +95,7 @@
     Object.keys(row).forEach(key => {
       const match = key.match(/(.+)\s(\d+)$/);
       if (match) {
-        activityColumns.push({ key, fee: parseInt(match[2]) });
+        activityColumns.push({ key, name: match[1], fee: parseInt(match[2]) });
       }
     });
   }
@@ -144,12 +152,10 @@
         const td = document.createElement("td");
         let value = row[k] || "";
 
-        // 美化活動選取欄位
         if (activityColumns.some(col => col.key === k) && value.trim() !== "") {
           td.classList.add("highlight");
         }
 
-        // 美化收費欄
         if (k === "收費") {
           td.classList.add("total-fee");
           value = total;
@@ -162,6 +168,31 @@
     });
   }
 
+  function updateSummary(data) {
+    const summaryDiv = document.getElementById("activitySummary");
+    const totalFeeDiv = document.getElementById("totalFeeSummary");
+
+    const counts = {};
+    let totalFee = 0;
+
+    activityColumns.forEach(col => counts[col.name] = 0);
+
+    data.forEach(row => {
+      activityColumns.forEach(col => {
+        if (row[col.key] && row[col.key].trim() !== "") {
+          counts[col.name]++;
+        }
+      });
+      totalFee += calculateTotal(row);
+    });
+
+    summaryDiv.innerHTML = Object.entries(counts)
+      .map(([activity, count]) => `✅ <strong>${activity}</strong>：${count} 人`)
+      .join("<br>");
+
+    totalFeeDiv.textContent = `💰 收費總金額：${totalFee} 元`;
+  }
+
   document.getElementById('searchInput').addEventListener('input', function () {
     const keyword = this.value.trim().toLowerCase();
     const filtered = allData.filter(row =>
@@ -170,6 +201,7 @@
       )
     );
     renderTable(filtered);
+    updateSummary(filtered);
   });
 
   document.getElementById('downloadBtn').addEventListener('click', () => {
@@ -178,12 +210,10 @@
       Object.values(row).some(
         val => val && val.toLowerCase().includes(keyword)
       )
-    ).map(row => {
-      return {
-        ...row,
-        收費: calculateTotal(row)
-      };
-    });
+    ).map(row => ({
+      ...row,
+      收費: calculateTotal(row)
+    }));
 
     const worksheet = XLSX.utils.json_to_sheet(filtered);
     const workbook = XLSX.utils.book_new();
