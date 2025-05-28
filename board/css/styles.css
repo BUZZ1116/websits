@@ -1,0 +1,36 @@
+body {
+  background: #f5f8fb;
+}
+
+th, td {
+  text-align: center;
+  vertical-align: middle;
+  word-break: break-word;
+}
+
+.table-container {
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+  border-radius: 8px;
+  overflow-x: auto;
+}
+
+.highlight {
+  background-color: #28a745;
+  color: white;
+  font-weight: bold;
+}
+
+.full {
+  background-color: #ccc !important;
+  color: #999 !important;
+}
+
+.total-fee {
+  font-weight: bold;
+  color: #007bff;
+}
+
+.btn-saved {
+  background-color: #28a745 !important;
+  border-color: #28a745 !important;
+}
