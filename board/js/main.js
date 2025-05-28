@@ -60,6 +60,7 @@ function renderTable(data) {
   data.forEach(row => {
     const tr = document.createElement("tr");
     const currentValues = {};
+    const isSaved = !!(row["收費"] && parseInt(row["收費"]) === calculateTotal(row));
 
     keys.forEach(k => {
       const td = document.createElement("td");
@@ -68,7 +69,13 @@ function renderTable(data) {
         const btn = document.createElement("button");
         btn.textContent = "💾 儲存";
         btn.className = "btn btn-sm btn-primary";
-        btn.onclick = () => saveRow(row.編號, currentValues, btn);
+        if (isSaved) {
+          btn.disabled = true;
+          btn.classList.add("btn-secondary");
+          btn.textContent = "✅ 已儲存";
+        } else {
+          btn.onclick = () => saveRow(row.編號, currentValues, btn);
+        }
         td.appendChild(btn);
 
       } else if (k === "收費") {
@@ -86,13 +93,9 @@ function renderTable(data) {
         input.type = "text";
         input.value = row[k] || "";
         input.className = "form-control form-control-sm";
+        input.readOnly = !!(row[k] && row[k].trim() !== "");
+        if (input.readOnly) input.classList.add("bg-light");
         input.oninput = () => currentValues[k] = input.value.trim();
-
-        if (row[k] && row[k].trim() !== "") {
-          input.readOnly = true;
-          input.classList.add("bg-light");
-        }
-
         currentValues[k] = row[k] || "";
         td.appendChild(input);
 
@@ -104,12 +107,14 @@ function renderTable(data) {
         const limit = (col.name === "石鹿登山口進") ? 10 : 30;
         const joinedCount = activityJoiners[col.name].length;
 
-        if (row[col.key] && row[col.key].trim() !== "") {
-          checkbox.disabled = true;
+        if (checkbox.checked) {
           td.classList.add("highlight");
-        } else if (joinedCount >= limit) {
+        }
+        if ((row[col.key] && row[col.key].trim() !== "") || joinedCount >= limit || isSaved) {
           checkbox.disabled = true;
-          td.classList.add("full");
+          if (!checkbox.checked && joinedCount >= limit) {
+            td.classList.add("full");
+          }
         }
 
         checkbox.onchange = () => {
@@ -152,13 +157,9 @@ function saveRow(id, rowData, button) {
     .then(res => res.json())
     .then(() => {
       button.textContent = "✅ 已儲存";
+      button.disabled = true;
       button.classList.remove("btn-primary");
-      button.classList.add("btn-saved");
-      setTimeout(() => {
-        button.textContent = "💾 儲存";
-        button.classList.remove("btn-saved");
-        button.classList.add("btn-primary");
-      }, 2000);
+      button.classList.add("btn-secondary");
     })
     .catch(err => alert("❌ 儲存失敗：" + err));
 }
