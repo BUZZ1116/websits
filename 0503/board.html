@@ -172,6 +172,12 @@
     const counts = {};
     let totalFee = 0;
 
+    // 設定人數上限（可依需求新增）
+    const limits = {
+      "石鹿登山口進": 10
+      // 其他沒指定的預設為 30
+    };
+
     activityColumns.forEach(col => counts[col.name] = 0);
 
     data.forEach(row => {
@@ -184,7 +190,12 @@
     });
 
     summaryDiv.innerHTML = Object.entries(counts)
-      .map(([activity, count]) => `✅ <strong>${activity}</strong>：${count} 人`)
+      .map(([activity, count]) => {
+        const limit = limits[activity] ?? 30;
+        const isOver = count > limit;
+        return `${isOver ? '❗' : '✅'} <strong>${activity}</strong>：${count} 人（上限 ${limit}）` +
+               (isOver ? ` <span class="text-danger fw-bold">⚠ 已超過</span>` : '');
+      })
       .join("<br>");
 
     totalFeeDiv.textContent = `💰 收費總金額：${totalFee} 元`;
@@ -201,38 +212,34 @@
     updateSummary(filtered);
   });
 
-  // 匯出 PDF
+  // 匯出 PDF（自動分頁）
   document.getElementById('pdfBtn').addEventListener('click', async () => {
-  const { jsPDF } = window.jspdf;
-  const container = document.querySelector('.container');
+    const { jsPDF } = window.jspdf;
+    const container = document.querySelector('.container');
 
-  html2canvas(container, { scale: 2 }).then(canvas => {
-    const imgData = canvas.toDataURL('image/png');
+    html2canvas(container, { scale: 2 }).then(canvas => {
+      const imgData = canvas.toDataURL('image/png');
+      const pdf = new jsPDF('p', 'mm', 'a4');
+      const pageWidth = pdf.internal.pageSize.getWidth();
+      const pageHeight = pdf.internal.pageSize.getHeight();
 
-    const pdf = new jsPDF('p', 'mm', 'a4');
-    const pageWidth = pdf.internal.pageSize.getWidth();
-    const pageHeight = pdf.internal.pageSize.getHeight();
+      const imgWidth = pageWidth;
+      const imgHeight = (canvas.height * imgWidth) / canvas.width;
 
-    const imgWidth = pageWidth;
-    const imgHeight = (canvas.height * imgWidth) / canvas.width;
+      let heightLeft = imgHeight;
+      let position = 0;
 
-    let position = 0;
-    let remainingHeight = imgHeight;
-
-    while (remainingHeight > 0) {
-      pdf.addImage(imgData, 'PNG', 0, position ? 0 : position, imgWidth, imgHeight, undefined, 'FAST');
-      remainingHeight -= pageHeight;
-
-      if (remainingHeight > 0) {
-        pdf.addPage();
-        position = 0;
+      while (heightLeft > 0) {
+        pdf.addImage(imgData, 'PNG', 0, position, imgWidth, imgHeight);
+        heightLeft -= pageHeight;
+        if (heightLeft > 0) {
+          pdf.addPage();
+        }
       }
-    }
 
-    pdf.save("114暑假營隊名單.pdf");
+      pdf.save("114暑假營隊名單.pdf");
+    });
   });
-});
-
 </script>
 
 </body>
