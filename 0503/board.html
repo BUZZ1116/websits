@@ -4,11 +4,10 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>114學年度輔導室暑假營隊名單</title>
-  <!-- 套件 CDN -->
+  <!-- 套件 -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
-
   <style>
     body {
       background: #f5f8fb;
@@ -27,16 +26,16 @@
       font-weight: bold;
       color: #007bff;
     }
+    .table-container {
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+      border-radius: 8px;
+      overflow: hidden;
+    }
     table thead th {
       background-color: #cce5ff !important;
     }
     table tr:hover {
       background-color: #f1f9ff;
-    }
-    .table-container {
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
-      border-radius: 8px;
-      overflow: hidden;
     }
   </style>
 </head>
@@ -69,177 +68,207 @@
 </div>
 
 <script>
-  const sheetdbURL = 'https://sheetdb.io/api/v1/pi0aipqod90md?sheet=工作表2';
-  let allData = [];
-  let activityColumns = [];
+const sheetdbURL = 'https://sheetdb.io/api/v1/pi0aipqod90md?sheet=工作表2';
+let allData = [];
+let activityColumns = [];
 
-  fetch(sheetdbURL)
-    .then(res => res.json())
-    .then(data => {
-      allData = data;
-      detectActivityColumns(data[0]);
-      updateMissingFees(data);
-      renderTable(data);
-      updateSummary(data);
-    })
-    .catch(err => {
-      document.getElementById("tableBody").innerHTML = `<tr><td colspan='11'>資料讀取失敗</td></tr>`;
-      console.error("載入失敗：", err);
-    });
+fetch(sheetdbURL)
+  .then(res => res.json())
+  .then(data => {
+    allData = data;
+    detectActivityColumns(data[0]);
+    updateMissingFees(data);
+    renderTable(data);
+    updateSummary(data);
+  })
+  .catch(err => {
+    document.getElementById("tableBody").innerHTML = `<tr><td colspan='11'>資料讀取失敗</td></tr>`;
+    console.error("載入失敗：", err);
+  });
 
-  function detectActivityColumns(row) {
-    activityColumns = [];
-    Object.keys(row).forEach(key => {
-      const match = key.match(/(.+)\s(\d+)$/);
-      if (match) {
-        activityColumns.push({ key, name: match[1], fee: parseInt(match[2]) });
-      }
-    });
-  }
-
-  function calculateTotal(row) {
-    return activityColumns.reduce((sum, act) => {
-      const joined = row[act.key];
-      if (joined && joined.trim() !== "") {
-        return sum + act.fee;
-      }
-      return sum;
-    }, 0);
-  }
-
-  function updateMissingFees(data) {
-    data.forEach(row => {
-      const total = calculateTotal(row);
-      if (!row.收費 || parseInt(row.收費) !== total) {
-        fetch(`https://sheetdb.io/api/v1/pi0aipqod90md/編號/${row.編號}?sheet=工作表2`, {
-          method: "PATCH",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({ data: { 收費: total } })
-        }).then(res => res.json())
-          .then(result => console.log(`✅ 已更新 編號 ${row.編號} 收費為 ${total}`))
-          .catch(err => console.error(`❌ 編號 ${row.編號} 更新失敗`, err));
-      }
-    });
-  }
-
-  function renderTable(data) {
-    const thead = document.getElementById("tableHead");
-    const tbody = document.getElementById("tableBody");
-    tbody.innerHTML = "";
-
-    if (!data.length) {
-      tbody.innerHTML = "<tr><td colspan='11'>查無資料</td></tr>";
-      return;
+function detectActivityColumns(row) {
+  activityColumns = [];
+  Object.keys(row).forEach(key => {
+    const match = key.match(/(.+)\s(\d+)$/);
+    if (match) {
+      activityColumns.push({ key, name: match[1], fee: parseInt(match[2]) });
     }
+  });
+}
 
-    const allKeys = Object.keys(data[0]);
-    const headRow = document.createElement("tr");
-    allKeys.forEach(k => {
-      const th = document.createElement("th");
-      th.textContent = k;
-      headRow.appendChild(th);
+function calculateTotal(row) {
+  return activityColumns.reduce((sum, act) => {
+    const joined = row[act.key];
+    if (joined && joined.trim() !== "") {
+      return sum + act.fee;
+    }
+    return sum;
+  }, 0);
+}
+
+function updateMissingFees(data) {
+  data.forEach(row => {
+    const total = calculateTotal(row);
+    if (!row.收費 || parseInt(row.收費) !== total) {
+      fetch(`https://sheetdb.io/api/v1/pi0aipqod90md/編號/${row.編號}?sheet=工作表2`, {
+        method: "PATCH",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ data: { 收費: total } })
+      }).then(res => res.json())
+        .then(result => console.log(`✅ 已更新 編號 ${row.編號} 收費為 ${total}`))
+        .catch(err => console.error(`❌ 編號 ${row.編號} 更新失敗`, err));
+    }
+  });
+}
+
+function renderTable(data) {
+  const thead = document.getElementById("tableHead");
+  const tbody = document.getElementById("tableBody");
+  tbody.innerHTML = "";
+
+  if (!data.length) {
+    tbody.innerHTML = "<tr><td colspan='11'>查無資料</td></tr>";
+    return;
+  }
+
+  const allKeys = Object.keys(data[0]);
+  const headRow = document.createElement("tr");
+  allKeys.forEach(k => {
+    const th = document.createElement("th");
+    th.textContent = k;
+    headRow.appendChild(th);
+  });
+  thead.innerHTML = "";
+  thead.appendChild(headRow);
+
+  const activityJoiners = {};
+  activityColumns.forEach(col => activityJoiners[col.name] = []);
+  data.forEach(row => {
+    activityColumns.forEach(col => {
+      if (row[col.key] && row[col.key].trim() !== "") {
+        activityJoiners[col.name].push(row);
+      }
     });
-    thead.innerHTML = "";
-    thead.appendChild(headRow);
+  });
 
-    data.forEach(row => {
-      const total = calculateTotal(row);
-      const tr = document.createElement("tr");
-      allKeys.forEach(k => {
-        const td = document.createElement("td");
-        let value = row[k] || "";
+  data.forEach(row => {
+    const total = calculateTotal(row);
+    const tr = document.createElement("tr");
+    allKeys.forEach(k => {
+      const td = document.createElement("td");
+      let value = row[k] || "";
 
-        if (activityColumns.some(col => col.key === k) && value.trim() !== "") {
+      if (activityColumns.some(col => col.key === k) && value.trim() !== "") {
+        const col = activityColumns.find(c => c.key === k);
+        const limit = (col.name === "石鹿登山口進") ? 10 : 30;
+        const currentJoiners = activityJoiners[col.name];
+        const index = currentJoiners.findIndex(j => j.編號 === row.編號);
+
+        if (index >= limit) {
+          td.classList.add("bg-danger", "text-white", "fw-bold");
+          td.title = `超出人數限制 (${limit}人)`;
+        } else {
           td.classList.add("highlight");
         }
-
-        if (k === "收費") {
-          td.classList.add("total-fee");
-          value = total;
-        }
-
-        td.textContent = value;
-        tr.appendChild(td);
-      });
-      tbody.appendChild(tr);
-    });
-  }
-
-  function updateSummary(data) {
-    const summaryDiv = document.getElementById("activitySummary");
-    const totalFeeDiv = document.getElementById("totalFeeSummary");
-
-    const counts = {};
-    let totalFee = 0;
-
-    // 設定人數上限（可依需求新增）
-    const limits = {
-      "石鹿登山口進": 10
-      // 其他沒指定的預設為 30
-    };
-
-    activityColumns.forEach(col => counts[col.name] = 0);
-
-    data.forEach(row => {
-      activityColumns.forEach(col => {
-        if (row[col.key] && row[col.key].trim() !== "") {
-          counts[col.name]++;
-        }
-      });
-      totalFee += calculateTotal(row);
-    });
-
-    summaryDiv.innerHTML = Object.entries(counts)
-      .map(([activity, count]) => {
-        const limit = limits[activity] ?? 30;
-        const isOver = count > limit;
-        return `${isOver ? '❗' : '✅'} <strong>${activity}</strong>：${count} 人（上限 ${limit}）` +
-               (isOver ? ` <span class="text-danger fw-bold">⚠ 已超過</span>` : '');
-      })
-      .join("<br>");
-
-    totalFeeDiv.textContent = `💰 收費總金額：${totalFee} 元`;
-  }
-
-  document.getElementById('searchInput').addEventListener('input', function () {
-    const keyword = this.value.trim().toLowerCase();
-    const filtered = allData.filter(row =>
-      Object.values(row).some(
-        val => val && val.toLowerCase().includes(keyword)
-      )
-    );
-    renderTable(filtered);
-    updateSummary(filtered);
-  });
-
-  // 匯出 PDF（自動分頁）
-  document.getElementById('pdfBtn').addEventListener('click', async () => {
-    const { jsPDF } = window.jspdf;
-    const container = document.querySelector('.container');
-
-    html2canvas(container, { scale: 2 }).then(canvas => {
-      const imgData = canvas.toDataURL('image/png');
-      const pdf = new jsPDF('p', 'mm', 'a4');
-      const pageWidth = pdf.internal.pageSize.getWidth();
-      const pageHeight = pdf.internal.pageSize.getHeight();
-
-      const imgWidth = pageWidth;
-      const imgHeight = (canvas.height * imgWidth) / canvas.width;
-
-      let heightLeft = imgHeight;
-      let position = 0;
-
-      while (heightLeft > 0) {
-        pdf.addImage(imgData, 'PNG', 0, position, imgWidth, imgHeight);
-        heightLeft -= pageHeight;
-        if (heightLeft > 0) {
-          pdf.addPage();
-        }
       }
 
-      pdf.save("114暑假營隊名單.pdf");
+      if (k === "收費") {
+        td.classList.add("total-fee");
+        value = total;
+      }
+
+      td.textContent = value;
+      tr.appendChild(td);
     });
+    tbody.appendChild(tr);
   });
+}
+
+function updateSummary(data) {
+  const summaryDiv = document.getElementById("activitySummary");
+  const totalFeeDiv = document.getElementById("totalFeeSummary");
+
+  const counts = {};
+  const overLimitList = {};
+  let totalFee = 0;
+
+  const limits = {
+    "石鹿登山口進": 10
+  };
+
+  activityColumns.forEach(col => {
+    counts[col.name] = 0;
+    overLimitList[col.name] = [];
+  });
+
+  data.forEach(row => {
+    activityColumns.forEach(col => {
+      if (row[col.key] && row[col.key].trim() !== "") {
+        counts[col.name]++;
+        const limit = limits[col.name] ?? 30;
+        if (counts[col.name] > limit) {
+          overLimitList[col.name].push(`${row.班級 || ''}班 ${row.姓名 || ''}`);
+        }
+      }
+    });
+    totalFee += calculateTotal(row);
+  });
+
+  summaryDiv.innerHTML = Object.entries(counts)
+    .map(([activity, count]) => {
+      const limit = limits[activity] ?? 30;
+      const isOver = count > limit;
+      return `${isOver ? '❗' : '✅'} <strong>${activity}</strong>：${count} 人（上限 ${limit}）` +
+             (isOver ? ` <span class="text-danger fw-bold">⚠ 已超過</span>` : '');
+    })
+    .join("<br>");
+
+  const overText = Object.entries(overLimitList)
+    .filter(([_, list]) => list.length > 0)
+    .map(([activity, list]) =>
+      `<div class="mt-2 text-danger">⚠ <strong>${activity}</strong> 超過者：${list.join('、')}</div>`
+    ).join("");
+
+  totalFeeDiv.innerHTML = `💰 收費總金額：${totalFee} 元` + overText;
+}
+
+document.getElementById('searchInput').addEventListener('input', function () {
+  const keyword = this.value.trim().toLowerCase();
+  const filtered = allData.filter(row =>
+    Object.values(row).some(
+      val => val && val.toLowerCase().includes(keyword)
+    )
+  );
+  renderTable(filtered);
+  updateSummary(filtered);
+});
+
+document.getElementById('pdfBtn').addEventListener('click', async () => {
+  const { jsPDF } = window.jspdf;
+  const container = document.querySelector('.container');
+
+  html2canvas(container, { scale: 2 }).then(canvas => {
+    const imgData = canvas.toDataURL('image/png');
+    const pdf = new jsPDF('p', 'mm', 'a4');
+    const pageWidth = pdf.internal.pageSize.getWidth();
+    const pageHeight = pdf.internal.pageSize.getHeight();
+    const imgWidth = pageWidth;
+    const imgHeight = (canvas.height * imgWidth) / canvas.width;
+
+    let heightLeft = imgHeight;
+    let position = 0;
+
+    while (heightLeft > 0) {
+      pdf.addImage(imgData, 'PNG', 0, position, imgWidth, imgHeight);
+      heightLeft -= pageHeight;
+      if (heightLeft > 0) {
+        pdf.addPage();
+      }
+    }
+
+    pdf.save("114暑假營隊名單.pdf");
+  });
+});
 </script>
 
 </body>
