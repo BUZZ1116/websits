@@ -85,7 +85,7 @@
 
 <script>
 const sheetdbURL = 'https://sheetdb.io/api/v1/pi0aipqod90md?sheet=工作表2';
-const activityLimits = { "石鹿登山口進": 10 }; // 其餘預設為 30
+const activityLimits = { "石鹿登山口進": 10 }; // 其他活動預設為 30 人
 let allData = [];
 let activityColumns = [];
 
@@ -188,7 +188,6 @@ function updateSummary(data) {
 
   const counts = {};
   let totalFee = 0;
-
   activityColumns.forEach(col => counts[col.name] = 0);
   data.forEach(row => {
     activityColumns.forEach(col => {
@@ -200,12 +199,20 @@ function updateSummary(data) {
   summaryDiv.innerHTML = Object.entries(counts).map(([activity, count]) => {
     const limit = activityLimits[activity] ?? 30;
     const remaining = limit - count;
+    const percent = Math.min(Math.round((count / limit) * 100), 100);
     const over = count >= limit;
+
     return `
-      <div>
-        ${over ? '❗' : '✅'}
-        <strong>${activity}</strong>：${count} 人（上限 ${limit}）｜
-        剩餘 <span class="${over ? 'text-danger fw-bold' : 'text-success'}">${remaining <= 0 ? '0（額滿）' : remaining} 名</span>
+      <div class="mb-3">
+        <strong>${activity}</strong>：${count} / ${limit} 人｜剩餘 
+        <span class="${over ? 'text-danger fw-bold' : 'text-success'}">
+          ${remaining <= 0 ? '0（額滿）' : remaining + ' 名'}
+        </span>
+        <div class="progress mt-1">
+          <div class="progress-bar ${over ? 'bg-danger' : 'bg-success'}" role="progressbar" style="width: ${percent}%;" aria-valuenow="${percent}" aria-valuemin="0" aria-valuemax="100">
+            ${percent}%
+          </div>
+        </div>
       </div>
     `;
   }).join("");
