@@ -19,8 +19,7 @@
   </style>
 </head>
 <body>
-
-<!-- 🔶 新增報名 Modal -->
+<!-- Modal for Add -->
 <div class="modal fade" id="inputModal" tabindex="-1" aria-labelledby="inputModalLabel" aria-hidden="true">
   <div class="modal-dialog modal-lg">
     <div class="modal-content">
@@ -57,10 +56,9 @@
   </div>
 </div>
 
-<!-- 🔷 主畫面 -->
+<!-- 主畫面 -->
 <div class="container py-5">
   <h2 class="text-center text-primary mb-4">114學年度輔導室暑假營隊名單</h2>
-
   <div class="d-flex flex-column flex-md-row justify-content-between gap-2 mb-3">
     <input type="text" id="searchInput" class="form-control me-2" placeholder="輸入關鍵字查詢（例如姓名、班級）">
     <div>
@@ -68,14 +66,12 @@
       <button id="pdfBtn" class="btn btn-danger">📄 匯出 PDF</button>
     </div>
   </div>
-
   <div class="table-responsive table-container">
     <table class="table table-bordered table-hover table-striped bg-white" id="dataTable">
       <thead id="tableHead"><tr><td colspan="11">載入中...</td></tr></thead>
       <tbody id="tableBody"><tr><td colspan="11">資料載入中...</td></tr></tbody>
     </table>
   </div>
-
   <div id="summary" class="mt-4 bg-white rounded p-4 shadow-sm border border-primary">
     <h5 class="text-primary mb-3">📊 統計摘要</h5>
     <div id="activitySummary" class="mb-2"></div>
@@ -84,7 +80,7 @@
 </div>
 
 <script>
-const sheetdbURL = 'https://sheetdb.io/api/v1/pi0aipqod90md?sheet=工作表2';
+const sheetdbURL = 'https://sheetdb.io/api/v1/pi0aipqod90md?sheet=營隊名單';
 const activityLimits = { "石鹿登山口進": 10 }; // 其他活動預設為 30 人
 let allData = [];
 let activityColumns = [];
@@ -279,6 +275,5 @@ document.getElementById("addForm").addEventListener("submit", function (e) {
     .catch(err => alert("❌ 新增失敗：" + err));
 });
 </script>
-
 </body>
 </html>
