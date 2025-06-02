@@ -19,7 +19,6 @@
   </style>
 </head>
 <body>
-<!-- Modal for Add -->
 <div class="modal fade" id="inputModal" tabindex="-1" aria-labelledby="inputModalLabel" aria-hidden="true">
   <div class="modal-dialog modal-lg">
     <div class="modal-content">
@@ -56,7 +55,6 @@
   </div>
 </div>
 
-<!-- 主畫面 -->
 <div class="container py-5">
   <h2 class="text-center text-primary mb-4">114學年度輔導室暑假營隊名單</h2>
   <div class="d-flex flex-column flex-md-row justify-content-between gap-2 mb-3">
@@ -81,7 +79,7 @@
 
 <script>
 const sheetdbURL = 'https://sheetdb.io/api/v1/pi0aipqod90md?sheet=營隊名單';
-const activityLimits = { "石鹿登山口進": 10 }; // 其他活動預設為 30 人
+const activityLimits = { "石鹿登山口進": 10 }; // 其他預設為 30 人
 let allData = [];
 let activityColumns = [];
 
@@ -102,6 +100,18 @@ function detectActivityColumns(row) {
     if (match) {
       activityColumns.push({ key, name: match[1], fee: parseInt(match[2]) });
     }
+  });
+
+  activityColumns.sort((a, b) => {
+    const order = [
+      "陶瓷博物館 300", 
+      "苑裡里山塾 350", 
+      "石鹿登山口進 500", 
+      "漂浮花卉 150", 
+      "繪畫課程 150", 
+      "合歡山 150"
+    ];
+    return order.indexOf(a.key) - order.indexOf(b.key);
   });
 }
 
